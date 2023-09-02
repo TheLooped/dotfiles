@@ -1,0 +1,49 @@
+import:
+  - ~/.config/alacritty/fonts.yml 
+  - ~/.config/alacritty/colors.yml 
+
+env:
+  TERM: alacritty
+
+window:
+
+  dynamic_padding: false
+
+  decorations: full
+
+  opacity: 1.0
+
+  startup_mode: Windowed
+
+  title: Alacritty
+
+  dynamic_title: false
+
+
+scrolling:
+
+  history: 3000
+
+  multiplier: 3
+
+cursor:
+
+  style:
+    shape: Block
+    
+    blinking: On
+
+  blink_interval: 350
+
+  unfocused_hollow: true
+
+  thickness: 0.15
+
+live_config_reload: true
+
+#shell:
+#  program: /bin/bash
+#  args:
+#    - --login
+
+ipc_socket: true

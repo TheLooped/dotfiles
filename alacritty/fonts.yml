@@ -1,0 +1,30 @@
+font:
+  normal:
+    family: Maple Mono NF
+
+    style: Italic
+
+  bold:
+    family: Maple Mono NF
+
+    style: Bold
+
+  italic:
+    family: Maple Mono NF
+
+    style: Italic
+
+  bold_italic:
+    family: Maple Mono NF
+
+    style: Bold Italic
+
+  size: 13.0
+
+  offset:
+    x: 1
+    y: 0
+
+  builtin_box_drawing: true
+
+draw_bold_text_with_bright_colors: true
