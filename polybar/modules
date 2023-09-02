@@ -1,0 +1,152 @@
+[module/ewmh]
+type                                = internal/xworkspaces
+pin-workspaces                      = true
+enable-click                        = true
+enable-scroll                       = true
+reverse-scroll                      = true
+
+icon-0                              = 1;
+icon-1                              = 2;
+icon-2                              = 3;
+icon-3                              = 4;
+icon-4                              = 5;
+icon-5                              = 6;
+icon-6                              = 7;
+icon-7                              = 8;
+icon-8                              = 9;
+icon-default                        = " "
+format                              = <label-state>
+label-monitor                       = %name%
+
+label-active                        = ""
+label-active-background             = ${color.bg}
+label-active-foreground             = ${color.blue}
+label-active-padding                = 3
+label-active-font                   = 2
+
+label-occupied                      = ""
+label-occupied-foreground           = ${color.teal}
+label-occupied-background           = ${color.bg}
+label-occupied-padding              = 3
+label-occupied-font                 = 2
+
+label-urgent                        = ""
+label-urgent-foreground             = ${color.red}
+label-urgent-background             = ${color.bg}
+label-urgent-padding                = 5
+label-urgent-font                   = 2
+
+label-empty                         = ""
+label-empty-background              = ${color.bg}
+label-empty-foreground              = ${color.white}
+label-empty-padding                 = 3
+label-empty-font                    = 2
+
+[module/date]
+type = internal/date
+
+interval = 1.0
+
+time = %I:%M %p
+time-alt = %d %b %Y
+
+format = <label>
+format-prefix = "  "
+format-prefix-font = 3
+format-prefix-foreground = ${color.purple}
+
+label = %time%
+label-font = 4
+label-foreground = ${color.purple}
+
+[module/title]
+type = internal/xwindow
+
+format = [<label>]
+format-foreground = ${color.blue}
+
+label = "%title%"
+label-maxlen = 6
+
+label-empty = "  "
+label-empty-foreground = ${color.blue}
+
+[module/battery]
+type = internal/battery
+
+full-at = 99
+
+format-charging = <animation-charging><label-charging>
+label-charging = %percentage%%
+format-charging-foreground = ${color.yellow}
+format-charging-font = 4
+
+format-discharging = <ramp-capacity><label-discharging>
+label-discharging = %percentage%%
+format-discharging-foreground = ${color.red}
+format-discharging-font = 4
+
+format-full-prefix = " "
+format-full-prefix-foreground = #A0E8A2
+format-full-prefix-font = 4
+
+
+label-full = %percentage%%
+label-full-foreground = #A0E8A2
+label-full-font = 4
+
+label-discharging-foreground = ${color.red}
+label-discharging-font = 4
+
+ramp-capacity-foreground =  ${color.red}   
+label-charging-foreground = ${color.yellow}
+label-charging-font = 4
+
+label-padding = 5
+
+ramp-capacity-0 = " " 
+ramp-capacity-1 = " " 
+ramp-capacity-2 = " " 
+ramp-capacity-3 = " " 
+ramp-capacity-4 = " "
+
+
+animation-charging-0 = " " 
+animation-charging-1 = " " 
+animation-charging-2 = " " 
+animation-charging-3 = " " 
+animation-charging-4 = " "
+
+
+animation-charging-foreground = ${color.yellow}
+animation-charging-framerate = 750
+animation-charging-font = 4
+
+format-charging-padding = 2
+format-discharging-padding = 2
+
+
+[module/logo]
+background         = #000000
+separator          = #000000
+type               = custom/text
+content-background = ${color.bg} 
+content-foreground = ${color.green}
+content            = "  "
+content-font       = 1
+
+[module/window]
+type = custom/script
+exec = ~/.config/polybar/bin/window
+interval = 0.5
+format-foreground = ${color.lime}
+format-font = 3
+label-padding-left = 2
+
+[module/layout]
+type = custom/script
+exec = ~/.config/polybar/bin/layout
+tail = true
+format-foreground = ${color.purple}
+format-font = 4
+label-padding-left = 1

@@ -1,0 +1,31 @@
+#!/bin/bash
+
+# Get workspace layouts
+layouts=$(dkcmd status type=full num=1 | awk '/^workspaces:/ {sub(/^workspaces: /, ""); gsub(/(*)?[0-9]*:\w*:/, ""); print}')
+
+# Create array 
+declare -a layout_array=($layouts)
+
+# Get current desktop
+current_desktop=$(xdotool get_desktop)
+
+# Print current layout 
+#echo "Current layout: ${layout_array[$current_desktop]}"
+
+case ${layout_array[$current_desktop]} in
+	grid)
+		echo ""
+		;;
+	tile)  
+		echo ""
+		;;
+	mono)
+		echo ""
+		;;
+		dwindle)
+		echo ""
+		;;
+	*)
+		echo ""
+		;;
+esac
