@@ -41,6 +41,11 @@ feh --no-fehbg --bg-scale --randomize '/home/loop/.config/dk/wallpapers' &
 
 $HOME/.config/polybar/launch.sh &
 
+if pgrep -x "picom" > /dev/null; then
+	killall picom
+fi
+
+picom --config ~/.config/dk/picom.conf &
 {
 # Workspace 
 
