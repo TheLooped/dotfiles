@@ -110,4 +110,7 @@ map('n', '<C-u>', '<C-u>zz', { desc = "Better Upwards navigation" })
 map('n', 'N', 'Nzzzv', { desc = "Centered search" })
 map('n', 'n', 'nzzzv', { desc = "Centered search" })
 
+-- Plugin related
+
+map('n', '<leader>n', '<cmd>Neotree toggle<cr>', { desc = "Open Neotree" })
 
