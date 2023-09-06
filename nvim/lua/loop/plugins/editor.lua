@@ -17,44 +17,47 @@ local editor = {
     -- Telescope
     {
         "nvim-telescope/telescope.nvim",
-	    lazy = true,
-	    cmd = "Telescope",
-	    dependencies = {
-		    { "nvim-tree/nvim-web-devicons" },
-		    { "nvim-lua/plenary.nvim" },
-		    { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+        lazy = true,
+        cmd = "Telescope",
+        dependencies = {
+            { "nvim-tree/nvim-web-devicons" },
+            { "nvim-lua/plenary.nvim" },
+            { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
         },
-	},
+    },
 
     {
         "nvim-treesitter/nvim-treesitter",
-	    lazy = true,
-	    build = function()
-		    if #vim.api.nvim_list_uis() ~= 0 then
-			    vim.api.nvim_command("TSUpdate")
-		    end
-	    end,
-	    event = "BufReadPost",
-	    dependencies = {
-		    {
-                "nvim-treesitter/nvim-treesitter-textobjects" 
+        lazy = true,
+        build = function()
+            if #vim.api.nvim_list_uis() ~= 0 then
+                vim.api.nvim_command("TSUpdate")
+            end
+        end,
+        event = "BufReadPost",
+        dependencies = {
+            {
+                "nvim-treesitter/nvim-treesitter-textobjects"
             },
-		    {
-                "JoosepAlviste/nvim-ts-context-commentstring" 
+            {
+                "JoosepAlviste/nvim-ts-context-commentstring"
             },
-		    {
-			    "hiphish/rainbow-delimiters.nvim",
-		    },
-		    {
-			    "nvim-treesitter/nvim-treesitter-context",
-		    },
-		    {
-			    "windwp/nvim-ts-autotag",
-		    },
-		    {
-			    "abecodes/tabout.nvim",
-		    },
-	    },
+            {
+                "hiphish/rainbow-delimiters.nvim",
+            },
+            {
+                "nvim-treesitter/nvim-treesitter-context",
+            },
+            {
+                "windwp/nvim-ts-autotag",
+            },
+            {
+                "abecodes/tabout.nvim",
+                config = function()
+                    require("loop.pconf.editor.tabout")
+                end
+            },
+        },
     },
 
     -- Search And Replace
@@ -96,6 +99,7 @@ local editor = {
     -- Split Join
     {
         'Wansmer/treesj',
+        lazy = true,
         keys = { '<space>j', '<space>s' },
         dependencies = { 'nvim-treesitter/nvim-treesitter' },
         config = function()
@@ -106,7 +110,10 @@ local editor = {
     -- Grapple
     {
         "cbochs/grapple.nvim",
-        event = {"VeryLazy", "BufReadPost", "BufEnter"}
+        event = { "VeryLazy", "BufReadPost", "BufEnter" },
+        config = function()
+            require("loop.pconf.editor.grapple")
+        end
     },
 
     -- Buf management
@@ -121,6 +128,9 @@ local editor = {
     -- Marks
     {
         "chentoast/marks.nvim",
+        config = function()
+            require('loop.pconf.editor.marks')
+        end
     }
 }
 

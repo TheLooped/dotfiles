@@ -14,7 +14,7 @@ local function map(modes, lhs, rhs, opts)
 
     for _, mode in ipairs(modes) do
         if type(rhs) == 'function' then
-		local fn_name = string.format("lua %s()", tostring(rhs))
+            local fn_name = string.format("lua %s()", tostring(rhs))
             vim.keymap.set(mode, lhs, fn_name, options)
         else
             vim.api.nvim_set_keymap(mode, lhs, rhs, options)
@@ -22,7 +22,7 @@ local function map(modes, lhs, rhs, opts)
 
         if opts and opts.desc then
             options.desc = opts.desc
-            vim.keymap.set( mode, lhs, rhs, options)
+            vim.keymap.set(mode, lhs, rhs, options)
         end
     end
 end
@@ -84,7 +84,7 @@ map('n', '<C-l>', '<C-w>l', { desc = "Move to Window Right" })
 
 local function newFile()
     return function()
-        local fname = vim.fn.input("File:")
+        local fname = vim.fn.input("FileName:")
 
         if fname == '' then
             print('No file name')
@@ -98,7 +98,7 @@ end
 
 -- Buffer Management
 map('n', '<leader>bd', '<cmd>bdelete<cr>', { desc = "Delete Buffer" })
-map('n', '<leader>fn', newFile(), {desc = "New File"})
+map('n', '<leader>fn', newFile(), { desc = "New File" })
 
 -- Misc
 map('n', '<C-c>', '<cmd>edit ~/.config/nvim<cr>', { desc = "Go to config" })
@@ -112,5 +112,43 @@ map('n', 'n', 'nzzzv', { desc = "Centered search" })
 
 -- Plugin related
 
-map('n', '<leader>n', '<cmd>Neotree toggle<cr>', { desc = "Open Neotree" })
+-- FlyBuf
+map('n', '<leader>b', '<cmd>FlyBuf<cr>', { desc = "FlyBuf" })
+-- Grapple
+map('n', '<leader>g', '<cmd>GrapplePopup tags<cr>', { desc = "Grapple" })
+map('n', '<leader>gt', '<cmd>GrappleToggle<cr>', { desc = "Grapple" })
+map('n', '<leader>gr', '<cmd>GrappleReset<cr>', { desc = "Grapple" })
+-- Lazy
+map('n', '<leader>l', '<cmd>Lazy<cr>', { desc = "Lazy" })
+map('n', '<leader>lu', '<cmd>Lazy update<cr>', { desc = "LazyUpdate" })
+map('n', '<leader>ls', '<cmd>Lazy sync<cr>', { desc = "LazySync" })
+-- Lazygit
+map('n', '<leader>lg', '<cmd>LazyGit<cr>', { desc = "Lazygit" })
+-- LspUI
+map('n', '<leader>la', '<cmd>LspUI code_action<cr>', { desc = "LspUI code_action" })
+map('n', '<leader>lc', '<cmd>LspUI declaration<cr>', { desc = "LspUI declaration" })
+map('n', '<leader>ld', '<cmd>LspUI definition<cr>', { desc = "LspUI definition" })
+map('n', '<leader>le', '<cmd>LspUI diagnostic<cr>', { desc = "LspUI diagnostic" })
+map('n', '<leader>lh', '<cmd>LspUI hover<cr>', { desc = "LspUI hover" })
+map('n', '<leader>li', '<cmd>LspUI implementation<cr>', { desc = "LspUI implementation" })
+map('n', '<leader>ln', '<cmd>LspUI rename<cr>', { desc = "LspUI rename" })
+map('n', '<leader>lr', '<cmd>LspUI reference<cr>', { desc = "LspUI reference" })
+map('n', '<leader>lt', '<cmd>LspUI type_definition<cr>', { desc = "LspUI type_definition" })
+-- Marks
 
+-- Muren
+map('n', '<leader>mt', '<cmd>MurenToggle<cr>', { desc = "Muren Toggle" })
+map('n', '<leader>mf', '<cmd>MurenFresh<cr>', { desc = "Fresh Muren instance" })
+-- Neotree
+map('n', '<leader>n', '<cmd>Neotree toggle<cr>', { desc = "Open Neotree" })
+-- Noice
+local vim = vim
+vim.keymap.set('c', '<S-Enter>', function() require("noice").redirect(vim.fn.getcmdline()) end,
+    { desc = 'Redirect Cmdline' })
+vim.keymap.set('n', '<leader>snl', function() require("noice").cmd("last") end, { desc = "Noice Last Message" })
+vim.keymap.set('n', '<leader>snh', function() require("noice").cmd("history") end, { desc = "Noice History" })
+vim.keymap.set('n', '<leader>sna', function() require("noice").cmd("all") end, { desc = "Noice All" })
+vim.keymap.set('n', '<leader>snd', function() require("noice").cmd("dismiss") end, { desc = "Dismiss All" })
+-- Themery
+map('n', '<leader>t', '<cmd>Telescope themes<cr>', { desc = "Themes" })
+-- Toggleterm
