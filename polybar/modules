@@ -138,7 +138,7 @@ content-font       = 1
 [module/window]
 type = custom/script
 exec = ~/.config/polybar/bin/window
-interval = 0.5
+interval = 0.4
 format-foreground = ${color.lime}
 format-font = 3
 label-padding-left = 2

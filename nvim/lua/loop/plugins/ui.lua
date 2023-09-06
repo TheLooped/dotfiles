@@ -181,14 +181,6 @@ local ui = {
         }
     },
 
-    -- Navic
-    {
-        "SmiteshP/nvim-navic",
-        lazy = true,
-        config = function()
-            require('nvim-navic').setup()
-        end
-    },
 }
 
 return ui

@@ -22,7 +22,7 @@ case ${layout_array[$current_desktop]} in
 	mono)
 		echo ""
 		;;
-		dwindle)
+	dwindle)
 		echo ""
 		;;
 	*)
