@@ -31,6 +31,8 @@ local comparators = {
 	compare.order,
 }
 
+cmp.event:on("menu_opened", function() vim.fn["codeium#Clear"]() end)
+
 cmp.setup {
     snippet = {
         expand = function(args)
@@ -53,8 +55,8 @@ cmp.setup {
         ['<Tab>'] = cmp.mapping(function(fallback)
             if cmp.visible() then
                 cmp.select_next_item()
-            elseif luasnip.jumpable(1) then
-                luasnip.jump_or_expand(1)
+            elseif luasnip.expand_or_jumpable() then
+                luasnip.jump_or_expand()
             else
                 fallback()
             end

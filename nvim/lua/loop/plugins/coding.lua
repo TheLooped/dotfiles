@@ -51,6 +51,7 @@ local coding = {
     {
         "hrsh7th/nvim-cmp",
         lazy = true,
+        commit = "6c84bc75c64f778e9f1dcb798ed41c7fcb93b639",
         event = "InsertEnter",
         dependencies = {
             "L3MON4D3/LuaSnip" ,
@@ -79,6 +80,33 @@ local coding = {
             require("LspUI").setup()
         end
     },
+        -- Codeium
+    {
+        "jcdickinson/codeium.nvim",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "hrsh7th/nvim-cmp",
+        },
+        config = function()
+            require('codeium').setup({})
+        end
+    },
+    {
+        'Exafunction/codeium.vim',
+        config = function ()
+            -- Change '<C-g>' here to any keycode you like.
+            vim.keymap.set('i', '<A-Tab>', function () return vim.fn['codeium#Accept']() end, { expr = true })
+            vim.keymap.set('i', '<A-;>', function() return vim.fn['codeium#CycleCompletions'](1) end, { expr = true })
+            vim.keymap.set('i', '<C-x>', function() return vim.fn['codeium#Clear']() end, { expr = true })
+        end
+    },
+    -- Formatter
+    {
+        "lukas-reineke/lsp-format.nvim",
+        config = function ()
+            require("lsp-format").setup()
+        end
+    }
 }
 
 return coding

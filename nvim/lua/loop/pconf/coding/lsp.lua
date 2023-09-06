@@ -17,6 +17,8 @@ local lsp_attach = function(client, bufnr)
     vim.keymap.set("n", "<space>cn", vim.lsp.buf.rename, bufopts)
     vim.keymap.set("n", "<space>ca", "<cmd> CodeActionMenu <cr>", bufopts)
     vim.keymap.set("n", "<space>cr", vim.lsp.buf.references, bufopts)
+
+    require("lsp-format").on_attach(client, bufnr)
 end
 
 local lspconfig = require("lspconfig")
