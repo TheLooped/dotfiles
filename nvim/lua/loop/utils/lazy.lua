@@ -20,7 +20,7 @@ if not lazy_ok then
 	return
 end
 
-local colorscheme = "retrobox"
+local colorscheme = "catpuccin"
 
 local opts = {
 	defaults = { lazy = false },
@@ -46,8 +46,7 @@ local opts = {
 				"netrwPlugin",
 				"netrwSettings",
 				"netrwFileHandlers",
-				"matchit",
-				"matchparen",
+				--"matchit",
 				"tar",
 				"tarPlugin",
 				"rrhelper",
@@ -59,8 +58,6 @@ local opts = {
 				"tutor",
 				"rplugin",
 				"syntax",
-				"shada",
-				"spellfile",
 				"synmenu",
 				"optwin",
 				"compiler",

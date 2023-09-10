@@ -2,16 +2,22 @@ local editor = {
 	-- File Explorer
 	{
 		"nvim-neo-tree/neo-tree.nvim",
-		event = "VimEnter",
+		cmd = "Neotree",
 		branch = "v3.x",
+		keys = {
+			{
+				"<leader>n",
+				function()
+					require("neo-tree.command").execute({ toggle = true, dir = vim.loop.cwd() })
+				end,
+			},
+			desc = "Explorer NeoTree",
+		},
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 			"nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
 			"MunifTanjim/nui.nvim",
 		},
-		config = function()
-			require("loop.pconf.editor.neo-tree")
-		end,
 	},
 
 	-- Telescope
@@ -26,11 +32,7 @@ local editor = {
 
 	{
 		"nvim-treesitter/nvim-treesitter",
-		build = function()
-			if #vim.api.nvim_list_uis() ~= 0 then
-				vim.api.nvim_command("TSUpdate")
-			end
-		end,
+		build = ":TSUpdate",
 		event = "BufReadPost",
 		dependencies = {
 			{
@@ -39,16 +41,35 @@ local editor = {
 			{
 				"abecodes/tabout.nvim",
 				config = function()
-					require("loop.pconf.editor.tabout")
+					require("loop.pconf.tabout")
+				end,
+			},
+			{
+				"Wansmer/treesj",
+				keys = { "<space>m", "<space>j", "<space>s" },
+				dependencies = { "nvim-treesitter/nvim-treesitter" },
+				config = function()
+					require("treesj").setup({--[[ your config ]]
+					})
 				end,
 			},
 		},
+		config = function()
+			require("loop.pconf.treesitter")
+		end,
 	},
 
 	-- Search And Replace
 	{
 		"AckslD/muren.nvim",
 		event = "VeryLazy",
+		cmd = {
+			"MurenToggle",
+			"MurenOpen",
+			"MurenClose",
+			"MurenUnique",
+			"MurenFresh",
+		},
 		opts = {},
 	},
 
@@ -77,19 +98,11 @@ local editor = {
 		event = "VeryLazy",
 		opts = {},
 	},
-	-- Split Join
-	{
-		"Wansmer/treesj",
-		keys = { "<space>j", "<space>s" },
-	},
-
 	-- Grapple
 	{
 		"cbochs/grapple.nvim",
 		event = "VeryLazy",
-		config = function()
-			require("loop.pconf.editor.grapple")
-		end,
+		opts = {},
 	},
 
 	-- Buf management
@@ -102,9 +115,8 @@ local editor = {
 	-- Marks
 	{
 		"chentoast/marks.nvim",
-		config = function()
-			require("loop.pconf.editor.marks")
-		end,
+		event = "VeryLazy",
+		opts = {},
 	},
 }
 

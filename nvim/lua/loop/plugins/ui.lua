@@ -13,15 +13,15 @@ local ui = {
 	},
 	{
 		"kvrohit/mellow.nvim",
+		lazy = true,
 		priority = 1000,
-		config = function()
-			vim.cmd([[colorscheme mellow]])
-		end,
 	},
 	{
 		"dasupradyumna/midnight.nvim",
 		priority = 1000,
-		lazy = true,
+		config = function()
+			vim.cmd([[colorscheme midnight]])
+		end,
 	},
 	{
 		"wilmanbarrios/palenight.nvim",
@@ -62,27 +62,29 @@ local ui = {
 	--Cursorline
 	{
 		"gen740/SmoothCursor.nvim",
+		event = { "BufNewFile", "BufReadPost" },
 		config = function()
-			require("loop.pconf.ui.smoothcursor")
+			require("loop.pconf.cursorline")
 		end,
-		event = { "BufEnter", "BufNewFile", "BufReadPost" },
 	},
+	-- Cursor word
+	{ "echasnovski/mini.cursorword", version = false },
 	--Bufferline
 	{
 		"akinsho/bufferline.nvim",
-		config = function()
-			require("loop.pconf.ui.bufferline")
-		end,
 		event = "VeryLazy",
+		config = function()
+			require("loop.pconf.bufferline")
+		end,
 	},
 
 	--Lualine
 	{
 		"nvim-lualine/lualine.nvim",
-		config = function()
-			require("loop.pconf.ui.lualine")
-		end,
 		event = "VeryLazy",
+		config = function()
+			require("loop.pconf.lualine")
+		end,
 	},
 
 	-- Indents
@@ -91,7 +93,7 @@ local ui = {
 		"lukas-reineke/indent-blankline.nvim",
 		event = { "BufReadPost", "BufNewFile" },
 		config = function()
-			require("loop.pconf.ui.indentline")
+			require("loop.pconf.indentblank")
 		end,
 	},
 
@@ -105,31 +107,79 @@ local ui = {
 	{
 		"folke/noice.nvim",
 		event = "VeryLazy",
-		config = function()
-			require("loop.pconf.ui.noice")
-		end,
-		dependencies = {
-
-			{
-				"rcarriga/nvim-notify",
+		opts = {
+			lsp = {
+				override = {
+					-- override the default lsp markdown formatter with Noice
+					["vim.lsp.util.convert_input_to_markdown_lines"] = false,
+					-- override the lsp markdown formatter with Noice
+					["vim.lsp.util.stylize_markdown"] = false,
+					-- override cmp documentation with Noice (needs the other options to work)
+					["cmp.entry.get_documentation"] = false,
+				},
+				signature = {
+					enabled = false,
+				},
 			},
-			{
-				"stevearc/dressing.nvim",
-				lazy = true,
-				init = function()
-					---@diagnostic disable-next-line: duplicate-set-field
-					vim.ui.select = function(...)
-						require("lazy").load({ plugins = { "dressing.nvim" } })
-						return vim.ui.select(...)
-					end
-					---@diagnostic disable-next-line: duplicate-set-field
-					vim.ui.input = function(...)
-						require("lazy").load({ plugins = { "dressing.nvim" } })
-						return vim.ui.input(...)
-					end
-				end,
+			routes = {
+				{
+					filter = {
+						event = "msg_show",
+						any = {
+							{ find = "%d+L, %d+B" },
+							{ find = "; after #%d+" },
+							{ find = "; before #%d+" },
+						},
+					},
+					view = "mini",
+				},
+			},
+			presets = {
+				bottom_search = true,
+				command_palette = true,
+				long_message_to_split = true,
+				inc_rename = true,
 			},
 		},
+	},
+	-- Notify
+	{
+		"rcarriga/nvim-notify",
+		keys = {
+			{
+				"<leader>un",
+				function()
+					require("notify").dismiss({ silent = true, pending = true })
+				end,
+				desc = "Dismiss all Notifications",
+			},
+		},
+		opts = {
+			timeout = 3000,
+			max_height = function()
+				return math.floor(vim.o.lines * 0.75)
+			end,
+			max_width = function()
+				return math.floor(vim.o.columns * 0.75)
+			end,
+		},
+	},
+	-- Dressing
+	{
+		"stevearc/dressing.nvim",
+		lazy = true,
+		init = function()
+			---@diagnostic disable-next-line: duplicate-set-field
+			vim.ui.select = function(...)
+				require("lazy").load({ plugins = { "dressing.nvim" } })
+				return vim.ui.select(...)
+			end
+			---@diagnostic disable-next-line: duplicate-set-field
+			vim.ui.input = function(...)
+				require("lazy").load({ plugins = { "dressing.nvim" } })
+				return vim.ui.input(...)
+			end
+		end,
 	},
 }
 

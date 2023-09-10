@@ -6,13 +6,9 @@ local coding = {
 		dependencies = {
 			{ "williamboman/mason.nvim" },
 			{ "williamboman/mason-lspconfig.nvim" },
-			{
-				"Jint-lzxy/lsp_signature.nvim",
-				config = require("loop.pconf.coding.sign"),
-			},
 		},
 		config = function()
-			require("loop.pconf.coding.lsp")
+			require("loop.pconf.lsp")
 		end,
 	},
 	-- Mason
@@ -21,23 +17,22 @@ local coding = {
 		cmd = "Mason",
 		build = ":MasonUpdate",
 		config = function()
-			require("loop.pconf.coding.mason")
+			require("loop.pconf.lsp")
 		end,
 	},
 
-	-- Snippets
-	{
-		"L3MON4D3/LuaSnip",
-		dependencies = {
-			"rafamadriz/friendly-snippets",
-		},
-	},
 	-- Auto Completion
 	{
 		"hrsh7th/nvim-cmp",
 		commit = "6c84bc75c64f778e9f1dcb798ed41c7fcb93b639",
 		event = "InsertEnter",
 		dependencies = {
+			{
+				"L3MON4D3/LuaSnip",
+				dependencies = {
+					"rafamadriz/friendly-snippets",
+				},
+			},
 			{
 				"hrsh7th/cmp-nvim-lsp",
 			},
@@ -57,26 +52,42 @@ local coding = {
 				"onsails/lspkind.nvim",
 			},
 		},
-		config = function()
-			require("loop.pconf.coding.cmp")
-		end,
 	},
 
-	--  Ui
+	-- Misc
 	{
 		"jinzhongjia/LspUI.nvim",
 		branch = "main",
-		event = "LspAttach",
+		event = "VeryLazy",
+		cmd = "LspUI",
+		config = function()
+			require("LspUI").setup({
+				-- config options go here
+			})
+		end,
 	},
-	{
-		"Exafunction/codeium.vim",
-	},
-	-- Formatter
 	{
 		"stevearc/conform.nvim",
+		event = "VeryLazy",
 		config = function()
-			require("loop.pconf.coding.conform")
+			require("loop.pconf.conform")
 		end,
+	},
+	{
+		"weilbith/nvim-code-action-menu",
+		lazy = true,
+		cmd = "CodeActionMenu",
+	},
+	{
+		"VidocqH/lsp-lens.nvim",
+		event = "VeryLazy",
+		config = function()
+			require("lsp-lens").setup()
+		end,
+	},
+	{
+		"Jint-lzxy/lsp_signature.nvim",
+		event = "VeryLazy",
 	},
 }
 

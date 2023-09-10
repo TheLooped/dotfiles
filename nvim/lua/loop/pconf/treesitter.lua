@@ -22,18 +22,20 @@ local config = {
 
     auto_install = true,
 
-    modules = {
-        context_commentstring = {
-            enable = true
-        },
-        textobjects = {
-            lsp_interop = {
-                enable = true,
-            }
-        },
-        indent = {
-            enable = true
+    context_commentstring = {
+        enable = true
+    },
+    textobjects = {
+        lsp_interop = {
+            enable = true,
         }
-    }
+    },
+    indent = {
+        enable = true
+    },
+	highlight = {
+		enable = true
+	}
 }
 require('nvim-treesitter.configs').setup(config)
+
