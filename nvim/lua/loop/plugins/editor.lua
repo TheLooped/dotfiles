@@ -1,137 +1,111 @@
 local editor = {
-    -- File Explorer
-    {
-        "nvim-neo-tree/neo-tree.nvim",
-        event = "VimEnter",
-        branch = "v3.x",
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-            "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
-            "MunifTanjim/nui.nvim",
-        },
-        config = function()
-            require('loop.pconf.editor.neo-tree')
-        end
-    },
+	-- File Explorer
+	{
+		"nvim-neo-tree/neo-tree.nvim",
+		event = "VimEnter",
+		branch = "v3.x",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+			"MunifTanjim/nui.nvim",
+		},
+		config = function()
+			require("loop.pconf.editor.neo-tree")
+		end,
+	},
 
-    -- Telescope
-    {
-        "nvim-telescope/telescope.nvim",
-        lazy = true,
-        cmd = "Telescope",
-        dependencies = {
-            { "nvim-tree/nvim-web-devicons" },
-            { "nvim-lua/plenary.nvim" },
-            { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-        },
-    },
+	-- Telescope
+	{
+		"nvim-telescope/telescope.nvim",
+		cmd = "Telescope",
+		dependencies = {
+			{ "nvim-tree/nvim-web-devicons" },
+			{ "nvim-lua/plenary.nvim" },
+		},
+	},
 
-    {
-        "nvim-treesitter/nvim-treesitter",
-        lazy = true,
-        build = function()
-            if #vim.api.nvim_list_uis() ~= 0 then
-                vim.api.nvim_command("TSUpdate")
-            end
-        end,
-        event = "BufReadPost",
-        dependencies = {
-            {
-                "nvim-treesitter/nvim-treesitter-textobjects"
-            },
-            {
-                "JoosepAlviste/nvim-ts-context-commentstring"
-            },
-            {
-                "hiphish/rainbow-delimiters.nvim",
-            },
-            {
-                "nvim-treesitter/nvim-treesitter-context",
-            },
-            {
-                "windwp/nvim-ts-autotag",
-            },
-            {
-                "abecodes/tabout.nvim",
-                config = function()
-                    require("loop.pconf.editor.tabout")
-                end
-            },
-        },
-    },
+	{
+		"nvim-treesitter/nvim-treesitter",
+		build = function()
+			if #vim.api.nvim_list_uis() ~= 0 then
+				vim.api.nvim_command("TSUpdate")
+			end
+		end,
+		event = "BufReadPost",
+		dependencies = {
+			{
+				"nvim-treesitter/nvim-treesitter-textobjects",
+			},
+			{
+				"abecodes/tabout.nvim",
+				config = function()
+					require("loop.pconf.editor.tabout")
+				end,
+			},
+		},
+	},
 
-    -- Search And Replace
-    {
-        'AckslD/muren.nvim',
-        config = true,
-        event = "VeryLazy",
-        lazy = true
-    },
+	-- Search And Replace
+	{
+		"AckslD/muren.nvim",
+		event = "VeryLazy",
+		opts = {},
+	},
 
-    -- Comments
-    {
-        'numToStr/Comment.nvim',
-        config = true,
-        event = "VeryLazy",
-        lazy = true,
-    },
-    -- Pairs
-    {
-        'echasnovski/mini.pairs',
-        config = true,
-        event = { "BufEnter", "BufNewFile", "BufReadPost", "InsertEnter" },
-        version = false,
-    },
-    -- Surround
-    {
-        "kylechui/nvim-surround",
-        config = true,
-        version = "", -- Use for stability; omit to use `main` branch for the latest features
-        event = "VeryLazy",
-        lazy = true,
-    },
+	-- Comments
+	{
+		"numToStr/Comment.nvim",
+		event = "VeryLazy",
+		opts = {},
+	},
+	-- Pairs
+	{
+		"echasnovski/mini.pairs",
+		event = "VeryLazy",
+		opts = {},
+	},
+	-- Surround
+	{
+		"kylechui/nvim-surround",
+		event = "VeryLazy",
+		opts = {},
+	},
 
-    -- Peeking
-    {
-        'nacro90/numb.nvim',
-        config = true,
-    },
-    -- Split Join
-    {
-        'Wansmer/treesj',
-        lazy = true,
-        keys = { '<space>j', '<space>s' },
-        dependencies = { 'nvim-treesitter/nvim-treesitter' },
-        config = function()
-            require('treesj').setup()
-        end,
-    },
+	-- Peeking
+	{
+		"nacro90/numb.nvim",
+		event = "VeryLazy",
+		opts = {},
+	},
+	-- Split Join
+	{
+		"Wansmer/treesj",
+		keys = { "<space>j", "<space>s" },
+	},
 
-    -- Grapple
-    {
-        "cbochs/grapple.nvim",
-        event = { "VeryLazy", "BufReadPost", "BufEnter" },
-        config = function()
-            require("loop.pconf.editor.grapple")
-        end
-    },
+	-- Grapple
+	{
+		"cbochs/grapple.nvim",
+		event = "VeryLazy",
+		config = function()
+			require("loop.pconf.editor.grapple")
+		end,
+	},
 
-    -- Buf management
-    {
-        'glepnir/flybuf.nvim',
-        cmd = 'FlyBuf',
-        config = function()
-            require('flybuf').setup({})
-        end,
-    },
+	-- Buf management
+	{
+		"glepnir/flybuf.nvim",
+		cmd = "FlyBuf",
+		opts = {},
+	},
 
-    -- Marks
-    {
-        "chentoast/marks.nvim",
-        config = function()
-            require('loop.pconf.editor.marks')
-        end
-    }
+	-- Marks
+	{
+		"chentoast/marks.nvim",
+		config = function()
+			require("loop.pconf.editor.marks")
+		end,
+	},
 }
 
 return editor

@@ -20,9 +20,10 @@ plugins=(git)
 source $ZSH/oh-my-zsh.sh
 
 alias nvim-opt="NVIM_APPNAME=Optimize nvim"
+alias nvim-lazy="NVIM_APPNAME=Lazy nvim"
 
 function nvims() {
-  items=("default", "Optimize")
+  items=("default", "Optimize", "Lazy")
   config=$(printf "%s\n" "${items[@]}" | fzf --prompt=" Neovim Config  " --height=~50% --layout=reverse --border --exit-0)
   if [[ -z $config ]]; then
     echo "Nothing selected"
