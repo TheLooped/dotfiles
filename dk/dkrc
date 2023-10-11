@@ -37,7 +37,7 @@ fi
 
 xrandr -s 1360x768 &
 
-feh --no-fehbg --bg-scale --randomize '/home/loop/.config/dk/wallpapers' &
+feh --no-fehbg --bg-scale --randomize "$HOME/.config/dk/wallpapers" &
 
 $HOME/.config/polybar/launch.sh &
 
