@@ -26,7 +26,7 @@ super + b
 
 # terminal
 super + Return
-	xfce4-terminal	
+	st	
 
 ### Window Management
 

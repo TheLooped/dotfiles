@@ -19,11 +19,11 @@ plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
-alias nvim-opt="NVIM_APPNAME=Optimize nvim"
+alias omni="NVIM_APPNAME=omni nvim"
 alias nvim-lazy="NVIM_APPNAME=Lazy nvim"
 
 function nvims() {
-  items=("default", "Optimize", "Lazy")
+  items=("default", "omni", "Lazy")
   config=$(printf "%s\n" "${items[@]}" | fzf --prompt=" Neovim Config  " --height=~50% --layout=reverse --border --exit-0)
   if [[ -z $config ]]; then
     echo "Nothing selected"
@@ -33,3 +33,7 @@ function nvims() {
   fi
   NVIM_APPNAME=$config nvim $@
 }
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
