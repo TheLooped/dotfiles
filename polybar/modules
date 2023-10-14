@@ -20,14 +20,14 @@ label-monitor                       = %name%
 
 label-active                        = ""
 label-active-background             = ${color.bg}
-label-active-foreground             = ${color.blue}
-label-active-padding                = 3
+label-active-foreground             = ${color.cyan}
+label-active-padding                = 2.3
 label-active-font                   = 2
 
 label-occupied                      = ""
 label-occupied-foreground           = ${color.teal}
 label-occupied-background           = ${color.bg}
-label-occupied-padding              = 3
+label-occupied-padding              = 2.3
 label-occupied-font                 = 2
 
 label-urgent                        = ""
@@ -39,7 +39,7 @@ label-urgent-font                   = 2
 label-empty                         = ""
 label-empty-background              = ${color.bg}
 label-empty-foreground              = ${color.white}
-label-empty-padding                 = 3
+label-empty-padding                 = 2.3
 label-empty-font                    = 2
 
 [module/date]
@@ -58,18 +58,7 @@ format-prefix-foreground = ${color.purple}
 label = %time%
 label-font = 4
 label-foreground = ${color.purple}
-
-[module/title]
-type = internal/xwindow
-
-format = [<label>]
-format-foreground = ${color.blue}
-
-label = "%title%"
-label-maxlen = 6
-
-label-empty = "  "
-label-empty-foreground = ${color.blue}
+label-padding = 2
 
 [module/battery]
 type = internal/battery
@@ -102,7 +91,7 @@ ramp-capacity-foreground =  ${color.red}
 label-charging-foreground = ${color.yellow}
 label-charging-font = 4
 
-label-padding = 5
+label-padding = 3
 
 ramp-capacity-0 = " " 
 ramp-capacity-1 = " " 
@@ -141,12 +130,14 @@ exec = ~/.config/polybar/bin/window
 interval = 0.4
 format-foreground = ${color.lime}
 format-font = 3
-label-padding-left = 2
+label-padding = 2
+format-fail = "  "
 
 [module/layout]
 type = custom/script
 exec = ~/.config/polybar/bin/layout
 tail = true
+interval = 1
 format-foreground = ${color.purple}
 format-font = 4
-label-padding-left = 1
+label-padding = 1

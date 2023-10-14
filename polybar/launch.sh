@@ -8,6 +8,21 @@ polybar-msg cmd quit
 
 # Launch bar1 and bar2
 echo "---" | tee -a /tmp/polybar1.log /tmp/polybar2.log
-polybar main 2>&1 | tee -a /tmp/polybar1.log & disown
+polybar tags 2>&1 | tee -a /tmp/polybar1.log & disown
+
+echo "---" | tee -a /tmp/polybar1.log /tmp/polybar2.log
+polybar window 2>&1 | tee -a /tmp/polybar1.log & disown
+
+echo "---" | tee -a /tmp/polybar1.log /tmp/polybar2.log
+polybar logo 2>&1 | tee -a /tmp/polybar1.log & disown
+
+echo "---" | tee -a /tmp/polybar1.log /tmp/polybar2.log
+polybar layout 2>&1 | tee -a /tmp/polybar1.log & disown
+
+echo "---" | tee -a /tmp/polybar1.log /tmp/polybar2.log
+polybar date 2>&1 | tee -a /tmp/polybar1.log & disown
+
+echo "---" | tee -a /tmp/polybar1.log /tmp/polybar2.log
+polybar battery 2>&1 | tee -a /tmp/polybar1.log & disown
 
 echo "Bars launched..."

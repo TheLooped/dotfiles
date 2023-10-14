@@ -9,8 +9,8 @@ if [ -n "$wins" ]; then
 		wmclass=$(xprop -id "$act_win" WM_CLASS 2>/dev/null | cut -d ' ' -f4 | sed 's/"/ /g')
 		echo "$wmclass"
 	else
-		echo ""
+        echo ""
 	fi
 else
-	echo ""
+        echo "  "
 fi

@@ -6,6 +6,7 @@ layouts=$(dkcmd status type=full num=1 | awk '/^workspaces:/ {sub(/^workspaces: 
 # Create array 
 declare -a layout_array=($layouts)
 
+
 # Get current desktop
 current_desktop=$(xdotool get_desktop)
 
@@ -14,16 +15,16 @@ current_desktop=$(xdotool get_desktop)
 
 case ${layout_array[$current_desktop]} in
 	grid)
-		echo ""
+		echo "  "
 		;;
 	tile)  
-		echo ""
+		echo "  "
 		;;
 	mono)
-		echo ""
+		echo "  "
 		;;
 	dwindle)
-		echo ""
+		echo "  "
 		;;
 	*)
 		echo ""
