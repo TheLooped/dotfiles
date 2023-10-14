@@ -12,5 +12,5 @@ if [ -n "$wins" ]; then
         echo ""
 	fi
 else
-        echo "  "
+        echo "V  I D "
 fi

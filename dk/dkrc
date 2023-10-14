@@ -37,7 +37,7 @@ fi
 
 xrandr -s 1360x768 &
 
-feh --no-fehbg --bg-scale --randomize "$HOME/.config/dk/wallpapers" &
+feh --no-fehbg --bg-scale "$HOME/.config/dk/wallpapers/skyline.jpg" &
 
 if hash polybar >/dev/null 2>&1; then
 	pkill polybar
