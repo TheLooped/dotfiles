@@ -16,6 +16,10 @@ super + alt + r
 super + shift + x
 	pkill -USR1 -x sxhkd
 
+# dedicated volume keys
+{XF86AudioRaiseVolume,XF86AudioLowerVolume}
+	pamixer {-i,-d} 2
+
 ### Programs
 # launcher
 super + p
@@ -42,8 +46,12 @@ super + shift + {j,k}
 super + {_,shift + ,ctrl + }{1-9,0}
 	dkcmd ws {view,send,follow} {1-9,10}
 
+# move window, signed (+/-) for relative changes
+alt + {h,j,k,l}
+	dkcmd win resize {x=-20,y=+20,y=-20,x=+20}
+
 # resize window, signed (+/-) for relative changes
-super + ctrl + {h,j,k,l}
+ctrl + alt + {h,j,k,l}
 	dkcmd win resize {w=-20,h=+20,h=-20,w=+20}
 
 # view, send, or follow to the next, previous, last active,

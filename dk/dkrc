@@ -44,11 +44,13 @@ if hash polybar >/dev/null 2>&1; then
     $HOME/.config/polybar/launch.sh &
 fi
 
-if pgrep -x "picom" > /dev/null; then
-	killall picom
+if pgrep -x "compfy" > /dev/null; then
+	pkill compfy
 fi
 
-picom --config ~/.config/dk/picom.conf &
+compfy --config ~/.config/dk/compfy.conf -b &
+
+pipewire &
 
 {
 # Workspace 
