@@ -7,7 +7,6 @@ logfile="$HOME/.dkrc.log"
 
 
 # Startup
-
 # (re)load sxhkd for keybinds
 if hash sxhkd >/dev/null 2>&1; then
 	pkill sxhkd
@@ -37,7 +36,7 @@ fi
 
 xrandr -s 1360x768 &
 
-feh --no-fehbg --bg-scale "$HOME/.config/dk/wallpapers/skyline.jpg" &
+feh --no-fehbg --bg-scale "$HOME/.config/dk/wallpapers/ramen.jpg" &
 
 if hash polybar >/dev/null 2>&1; then
 	pkill polybar
@@ -50,14 +49,19 @@ fi
 
 compfy --config ~/.config/dk/compfy.conf -b &
 
-pipewire &
-
+if hash pipewire >/dev/null 2>&1; then
+	pkill pipewire 
+    pipewire &
+    wireplumber &
+fi
 {
 # Workspace 
 
 dkcmd set numws=6
 
-dkcmd set ws=1 name="I" layout=grid gap=5
+dkcmd set ws=_ apply gap=8
+
+dkcmd set ws=1 name="I" layout=grid 
 dkcmd set ws=2 name="II"
 dkcmd set ws=3 name="III"
 dkcmd set ws=4 name="IV"

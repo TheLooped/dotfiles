@@ -107,7 +107,7 @@ float alpha = 0.8;
 /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
     /* 8 normal colors */
-    "#E0E0E0", "#FFB6C1", "#B0E57C", "#FFFFA0", "#AEC6CF", "#E7A6D1", "#A0E6E2",
+    "#02000A", "#FFB6C1", "#B0E57C", "#FFFFA0", "#AEC6CF", "#E7A6D1", "#A0E6E2",
     "#C0C0C0",
 
     /* 8 bright colors */
@@ -118,7 +118,7 @@ static const char *colorname[] = {
 
     /* more colors can be added after 255 to use with DefaultXX */
     "#B8DCE2", "#F0C1E4", "#D0D0D0", /* default foreground colour */
-    "#1A1E2A",                       /* default background colour */
+    "#12121b",                       /* default background colour */
 };
 
 /*

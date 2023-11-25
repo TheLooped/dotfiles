@@ -18,7 +18,10 @@ super + shift + x
 
 # dedicated volume keys
 {XF86AudioRaiseVolume,XF86AudioLowerVolume}
-	pamixer {-i,-d} 2
+	pamixer {-i,-d} 5
+
+{XF86AudioMute}
+	pamixer -t 
 
 ### Programs
 # launcher
@@ -30,6 +33,9 @@ super + b
 
 # terminal
 super + Return
+    ghostty
+
+super + shift + Return
 	st	
 
 ### Window Management
