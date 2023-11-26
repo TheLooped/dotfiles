@@ -1,6 +1,4 @@
 # General
-title = "Ghostty"
-
 term = "ghostty"
 
 # Appearance
@@ -41,8 +39,11 @@ window-padding-y = 0
 # Fonts
 
 font-family = "Maple Mono NF"
+font-style = "BoldItalic"
 
-font-style = "Italic" 
+font-family-bold = "Maple Mono NF"
+font-family-italic = "Maple Mono NF"
+font-family-bold-italic = "Maple Mono NF"
 
 font-size = 12
 

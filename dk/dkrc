@@ -48,12 +48,6 @@ if pgrep -x "compfy" > /dev/null; then
 fi
 
 compfy --config ~/.config/dk/compfy.conf -b &
-
-if hash pipewire >/dev/null 2>&1; then
-	pkill pipewire 
-    pipewire &
-    wireplumber &
-fi
 {
 # Workspace 
 
