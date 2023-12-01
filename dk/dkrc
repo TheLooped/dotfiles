@@ -66,7 +66,7 @@ dkcmd set ws=6 name="VI"
 
 dkcmd set focus_open=true focus_mouse=true
 
-dkcmd set tilet-head=0 tile_hints=false
+dkcmd set tilet-head=0 tile_hints=true
 
 dkcmd set win_minwh=50 win_minxy=10
 
@@ -79,6 +79,8 @@ dkcmd set border width=$border_width colour focus='#0087CA' unfocus='#767676' ur
 # Rules
 
 dkcmd rule class="^Brave-browser$" ws=2
+dkcmd rule class="^discord$" ws=3
+
 } >> "$logfile" 2>&1 # append responses
 
 if grep -q 'error:' "$logfile"; then

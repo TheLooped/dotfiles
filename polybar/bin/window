@@ -1,16 +1,25 @@
 #!/bin/bash
-wins=$(xdotool search --all --onlyvisible --desktop $(xprop -notype -root _NET_CURRENT_DESKTOP | cut -c 24-) "" 2>/dev/null)
 
-nums=$( echo "$wins" | wc -l)
+print_wintitle() {
+    wins=$(xdotool search --all --onlyvisible --desktop $(xprop -notype -root _NET_CURRENT_DESKTOP | cut -c 24-) "" 2>/dev/null)
 
-if [ -n "$wins" ]; then
-	act_win=$(xdotool getactivewindow 2>/dev/null)
-	if [ -n "$act_win" ]; then
-		wmclass=$(xprop -id "$act_win" WM_CLASS 2>/dev/null | cut -d ' ' -f4 | sed 's/"/ /g')
-		echo "$wmclass"
-	else
-        echo ""
-	fi
-else
+    nums=$(echo "$wins" | wc -l)
+
+    if [ -n "$wins" ]; then
+        act_win=$(xdotool getactivewindow 2>/dev/null)
+        if [ -n "$act_win" ]; then
+            wmclass=$(xprop -id "$act_win" WM_CLASS 2>/dev/null | cut -d ' ' -f4 | sed 's/"/ /g')
+            if [ -z "$(echo -e "${wmclass}" | tr -d '[:space:]')" ]; then
+                echo "Ghostty"
+            else
+                echo "$wmclass"
+            fi
+        else
+            echo ""
+        fi
+    else
         echo "V  I D "
-fi
+    fi
+}
+
+print_wintitle

@@ -31,6 +31,12 @@ super + p
 super + b
 	brave-browser-stable
 
+super + d
+    discord
+
+super + shift + e
+    $HOME/.config/eww/launch.sh
+
 # terminal
 super + Return
     ghostty
@@ -80,8 +86,8 @@ super + {q,space,Tab}
 	dkcmd win {kill,swap,cycle}
 
 # toggle fullscreen and fake fullscreen (enable manipulating fullscreen superdow)
-{_,super + }F11
-	dkcmd win {full,fakefull}
+super + shift + f
+	dkcmd win full
 
 super + shift + space
 	dkcmd win float
