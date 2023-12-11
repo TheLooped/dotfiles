@@ -1,0 +1,42 @@
+(deflisten workspace "scripts/workspace")
+(deflisten layout "scripts/layout") 
+
+(defwindow bar
+  :monitor 0 ;; Optional for X11
+  :stacking "fg"
+  :focusable "true"
+  :windowtype "dock"
+  :reserve (struts :distance "35px" :side "top")
+  :wm-ignore false
+  :geometry (geometry
+              :x "0%"
+              :y "3px"
+              :width "99%"
+              :height "40px"
+              :anchor "top center")
+  (bar))
+
+
+(defwidget bar []
+  (box :class "bar"
+       :orientation "h"
+       (workspaces)
+       (layout)
+       ))
+
+
+(defwidget workspaces []
+  (box :class "workspace"
+       :orientation "h"
+       :valign "center"
+       (literal :content workspace)))
+
+(defwidget layout []
+  (box :class "layouts"
+       :orientation "h"
+       :valign "center"
+    (eventbox
+      (button 
+        :tooltip "Change current layout"
+        :onclick "$HOME/.config/eww/scripts/cycle_layout"
+        (label :text layout :justify "center")))))
