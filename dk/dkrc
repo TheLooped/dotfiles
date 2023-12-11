@@ -36,7 +36,7 @@ fi
 
 xrandr -s 1360x768 &
 
-feh --no-fehbg --bg-scale "$HOME/.config/dk/wallpapers/ramen.jpg" &
+feh --no-fehbg --bg-scale "$HOME/.config/dk/wallpapers/sunset.jpg" &
 
 if hash polybar >/dev/null 2>&1; then
 	pkill polybar

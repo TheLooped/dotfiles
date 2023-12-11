@@ -21,9 +21,10 @@ source $ZSH/oh-my-zsh.sh
 
 alias omni="NVIM_APPNAME=omni nvim"
 alias nvim-lazy="NVIM_APPNAME=Lazy nvim"
+alias omega="NVIM_APPNAME=omega nvim"
 
 function nvims() {
-  items=("default", "omni", "Lazy")
+  items=("default", "omni", "Lazy", "omega")
   config=$(printf "%s\n" "${items[@]}" | fzf --prompt=" Neovim Config  " --height=~50% --layout=reverse --border --exit-0)
   if [[ -z $config ]]; then
     echo "Nothing selected"

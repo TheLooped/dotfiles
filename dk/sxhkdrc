@@ -93,6 +93,6 @@ super + shift + space
 	dkcmd win float
 
 # change active workspace layout
-super + {t,m,g,d}
+super + {t,m,g,w}
 	dkcmd set layout {tile,mono,grid,dwindle}
 
