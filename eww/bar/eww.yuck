@@ -20,21 +20,56 @@
 (defwidget bar []
   (box :class "bar"
        :orientation "h"
+       (clock)
+       (logo)
        (workspaces)
        (layout)
        ))
 
+(defwidget clock []
+  (box
+    :class "clock"
+    :space-evenly false
+    :halign "center"
+    (label 
+      :class "time" 
+      :text {formattime(EWW_TIME, "%H", "America/Sao_Paulo")}
+    )
+    (box 
+      :class "timebox" 
+      :valign "center" 
+      :orientation "v" 
+      (box :class "timesep_icon" "⧭")
+    )
+    (label 
+      :class "time" 
+      :text {formattime(EWW_TIME, "%M", "America/Sao_Paulo")}
+    )
+  )
+)
 
 (defwidget workspaces []
   (box :class "workspace"
        :orientation "h"
        :valign "center"
+       :halign "center"
        (literal :content workspace)))
+
+(defwidget logo []
+  (box :orientation "h"
+       :valign "center"
+       :halign "center"
+       :class "logo"
+       :tooltip "Launch apps"
+    (button :class "dispatcher" :onclick "rofi -show drun -font 'Maple Mono NF 13' -show-icons &" "")
+  )
+)
 
 (defwidget layout []
   (box :class "layouts"
        :orientation "h"
        :valign "center"
+       :halign "center"
     (eventbox
       (button 
         :tooltip "Change current layout"

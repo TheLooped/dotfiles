@@ -10,8 +10,20 @@
 
 .layouts {
   font-size: 28px;
-  font-family: "Maple Mono NF";
+  font-family: "Cascursive";
   color: $sunflower;
+}
+
+.logo {
+  margin: 7px 0 7px 7px;
+  font-size: 23px;
+  font-family: "Cascursive";
+  .dispatcher {
+    color: $mint;
+    border-radius: 7px;
+    font-size: inherit;
+    padding: 0 14px 0 10px;
+  }
 }
 
 .workspace {
@@ -48,5 +60,27 @@
   &:hover {
     color: #AA5AAB;
     transition: color 0.3s ease-in-out;
+  }
+}
+
+.clock {
+  font-family: "Cascursive";
+  font-size: 20px;
+  padding: 0px 7px 0px 7px;
+
+  .time {
+    color: $blush;
+    padding: 0px 7px 0px 7px;
+  }
+
+  .timebox {
+    color: $mint;
+    padding: 0px 7px 0px 7px;
+
+    .timesep_icon {
+        font-family: "JetBrains Mono Nerd Font";
+        font-size: 18px;
+        color: $cream;
+    }
   }
 }
