@@ -38,25 +38,31 @@ xrandr -s 1360x768 &
 
 feh --no-fehbg --bg-scale "$HOME/.config/dk/wallpapers/sunset.jpg" &
 
-if hash polybar >/dev/null 2>&1; then
-	pkill polybar
-    $HOME/.config/polybar/launch.sh &
+#if hash polybar >/dev/null 2>&1; then
+	#pkill polybar
+    #$HOME/.config/polybar/launch.sh &
+#fi
+
+if hash eww >/dev/null 2>&1; then
+	pkill eww
+    eww open -c $HOME/.config/eww/bar bar &
 fi
 
-if pgrep -x "compfy" > /dev/null; then
+
+if hash compfy >/dev/null 2>&1; then
 	pkill compfy
+    compfy --config $HOME/.config/dk/compfy.conf -b &
 fi
 
-compfy --config ~/.config/dk/compfy.conf -b &
 {
 # Workspace 
 
 dkcmd set numws=6
 
-dkcmd set ws=_ apply gap=8
+dkcmd set ws=_ apply gap=6
 
 dkcmd set ws=1 name="I" layout=grid 
-dkcmd set ws=2 name="II"
+dkcmd set ws=2 name="II" layout=mono
 dkcmd set ws=3 name="III"
 dkcmd set ws=4 name="IV"
 dkcmd set ws=5 name="V"

@@ -9,14 +9,30 @@
 }
 
 .layouts {
-  font-size: 28px;
-  font-family: "Cascursive";
-  color: $sunflower;
+    border-radius: 17px;
+    font-size: 30px;
+    font-family: "Cascursive";
+    color: $sunflower;
+    padding: 7px;
+}
+
+.bat {
+    color: $mauve;
+	border-radius: 17px;
+    margin: 0px 10px 0px 10px;
+    padding: 0px 10px 0px 10px;
+}
+ 
+.iconbat {
+    color: $dusty-pink;
+    font-size: 13px;
+    font-family: "Cascursive";
+    margin: 8px;
 }
 
 .logo {
   margin: 7px 0 7px 7px;
-  font-size: 23px;
+  font-size: 20px;
   font-family: "Cascursive";
   .dispatcher {
     color: $mint;
@@ -26,9 +42,26 @@
   }
 }
 
+.name {
+    font-size: 14px;
+    font-family: "Monaspace Radon";
+    font-weight: bold;
+    color: $sunflower;
+    padding: 0 14px 0 10px;
+    margin: 0px 10px 0px 0px;
+}
+.wifi_icon {
+    font-size: 20px;
+    font-family: "Monaspace Radon";
+    color: $teal;
+    border-radius: 100%;
+    margin: 0px 10px 0px 5px;
+}
+
 .workspace {
+  background-color: $alt-bg;
+  border-radius: 17px;
   font-size: 23px;
-  font-family: "Cascursive";
   padding: 0px 7px 0px 7px;
 }
 
@@ -70,12 +103,12 @@
 
   .time {
     color: $blush;
-    padding: 0px 7px 0px 7px;
+    padding: 0px 3px 0px 3px;
   }
 
   .timebox {
     color: $mint;
-    padding: 0px 7px 0px 7px;
+    padding: 0px 3px 0px 3px;
 
     .timesep_icon {
         font-family: "JetBrains Mono Nerd Font";
