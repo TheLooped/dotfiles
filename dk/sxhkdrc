@@ -44,6 +44,13 @@ super + Return
 super + shift + Return
 	st	
 
+# super + alt + Tab  
+#   setxkbmap -layout canary
+#
+# super + alt + shift + Tab
+#   setxkbmap -layout us
+
+
 ### Window Management
 
 # focus next or previous window

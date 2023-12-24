@@ -1,3 +1,6 @@
+eval "$(termium shell-hook show post)"
+
+eval "$(zoxide init zsh)"
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 export PATH=$HOME/.local/bin:$PATH
@@ -38,3 +41,7 @@ function nvims() {
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+eval "$(termium shell-hook show post)"
+
+# opam configuration
+[[ ! -r /home/loop/.opam/opam-init/init.zsh ]] || source /home/loop/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null

@@ -14,7 +14,8 @@
 (defwindow bar
   :monitor 0 ;; Optional for X11
   :stacking "fg"
-  :focusable "true" :windowtype "dock"
+  :exclusive true
+  :windowtype "dock"
   :reserve (struts :distance "50px" :side "top")
   :wm-ignore false
   :geometry (geometry
