@@ -25,13 +25,10 @@ dpi=$(( dpi * 10))
 
 if [ $dpi -ge 140 ]; then
 	border_width=4
-	border_outer_width=3
 elif [ $dpi -ge 120 ]; then
 	border_width=4
-	border_outer_width=2
 else
 	border_width=2
-	border_outer_width=1
 fi
 
 xrandr -s 1360x768 &

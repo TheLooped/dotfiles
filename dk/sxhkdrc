@@ -44,11 +44,11 @@ super + Return
 super + shift + Return
 	st	
 
-# super + alt + Tab  
-#   setxkbmap -layout canary
-#
-# super + alt + shift + Tab
-#   setxkbmap -layout us
+alt + shift + x 
+    setxkbmap -layout canary
+
+alt + shift + z
+    setxkbmap -layout us
 
 
 ### Window Management
@@ -65,13 +65,13 @@ super + shift + {j,k}
 super + {_,shift + ,ctrl + }{1-9,0}
 	dkcmd ws {view,send,follow} {1-9,10}
 
-# move window, signed (+/-) for relative changes
-alt + {h,j,k,l}
-	dkcmd win resize {x=-20,y=+20,y=-20,x=+20}
-
-# resize window, signed (+/-) for relative changes
-ctrl + alt + {h,j,k,l}
-	dkcmd win resize {w=-20,h=+20,h=-20,w=+20}
+# # move window, signed (+/-) for relative changes
+# alt + {h,j,k,l}
+# 	dkcmd win resize {x=-20,y=+20,y=-20,x=+20}
+#
+# # resize window, signed (+/-) for relative changes
+# ctrl + alt + {h,j,k,l}
+# 	dkcmd win resize {w=-20,h=+20,h=-20,w=+20}
 
 # view, send, or follow to the next, previous, last active,
 # next non-empty, or prev non-empty workspace
