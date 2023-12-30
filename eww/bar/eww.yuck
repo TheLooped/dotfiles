@@ -1,0 +1,39 @@
+(defvar eww "/usr/local/bin/eww -c $HOME/.config/eww/bar")
+
+(deflisten workspace "scripts/workspace")
+
+(defwindow bar
+  :monitor 0 ;; Optional for X11
+  :stacking "fg"
+  :exclusive true
+  :windowtype "dock"
+  :reserve (struts :distance "35px" :side "top")
+  :wm-ignore false
+  :geometry (geometry
+              :x "0%"
+              :y "2px"
+              :width "99.5%"
+              :height "40px"
+              :anchor "top center")
+  (bar))
+
+
+(defwidget bar []
+  (box :class "bar"
+    (left)
+       ))
+
+(defwidget left []
+  (box :orientation "h"
+       :space-evenly false
+       :halign "start"
+       :class "left"
+       (workspaces)
+       ))
+
+(defwidget workspaces []
+  (box :class "workspace"
+       :orientation "h"
+       :valign "center"
+       :halign "center"
+       (literal :content workspace)))

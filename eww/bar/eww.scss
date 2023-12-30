@@ -1,0 +1,52 @@
+@import 'colors';
+
+* {
+    all: unset;
+}
+
+.bar {
+    background-color: $bg;
+    border-radius: 10px;
+}
+
+.workspace {
+  padding: 0px 7px 0px 7px;
+  margin: 0px 7px 0px 7px;
+  font-size: 18px;
+}
+
+.workspace-focused {
+  font-size: 20px;
+  font-family: "Maple Mono NF";
+  padding: 0px 4px;
+  color: $dodger-blue;
+}
+
+.workspace-occupied {
+  font-size: 20px;
+  font-family: "Maple Mono NF";
+  padding: 0px 4px;
+  color: $mint;
+
+
+  transition: color 0.5s ease-in-out;
+
+  &:hover {
+    color: #0DAC15;
+    transition: color 0.5s ease-in-out;
+  }
+}
+
+.workspace-empty {
+  font-size: 20px;
+  font-family: "Maple Mono NF";
+  padding: 0px 4px;
+  color: $pink;
+
+  transition: color 0.5s ease-in-out;
+  &:hover {
+    color: #AA5AAB;
+    transition: color 0.5s ease-in-out;
+  }
+}
+
