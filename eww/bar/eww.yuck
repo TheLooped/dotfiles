@@ -3,6 +3,7 @@
 (deflisten workspace "scripts/workspace")
 (deflisten wintitle "scripts/wintitle")
 (defpoll clock  :interval "1s" "scripts/clock")
+(deflisten layout "scripts/layout") 
 
 ;;(defpoll network_status :interval "1s" "scripts/network status")
 (defpoll network_icon :interval "1s" "scripts/network icon")
@@ -42,6 +43,7 @@
        :space-evenly false
        :halign "start"
        :class "left"
+       (logo)
        (workspaces)
        (wintitle)
        ))
@@ -53,6 +55,7 @@
        :class "right"
        (clock)
        (actionsbox)
+       (layout)
        ))
 
 (defwidget workspaces []
@@ -98,5 +101,23 @@
     (box :class "clock"
     (label :text clock)))
 
+(defwidget layout []
+  (box :class "layouts"
+       :orientation "h"
+       :valign "center"
+       :halign "center"
+    (eventbox
+      (button 
+        :tooltip "Change current layout"
+        :onclick "$HOME/.config/eww/scripts/cycle_layout"
+        (label :text layout :justify "center")))))
 
-
+(defwidget logo []
+  (box :orientation "h"
+       :valign "center"
+       :halign "center"
+       :class "logo"
+       :tooltip "Launch apps"
+    (button :class "dispatcher" :onclick "rofi -show drun -font 'Maple Mono NF 13' -show-icons &" "")
+  )
+)

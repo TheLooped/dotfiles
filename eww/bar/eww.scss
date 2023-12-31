@@ -87,8 +87,29 @@
 }
 
 .clock {
-    color: $light-blue;
+    color: $dodger-blue;
     font-family: 'Monospace Krypton';
     font-size: 17px;
     font-weight: 700;
 }
+
+.layouts {
+    font-size: 23px;
+    font-family: "Monspace Argon";
+    font-weight: 700;
+    color: $sunflower;
+    padding: 7px;
+}
+
+.logo {
+  margin: 0px 7px 0px 7px;
+  font-size: 23px;
+  font-family: "Monospace Argon";
+  .dispatcher {
+    color: $mint;
+    border-radius: 7px;
+    font-size: inherit;
+    padding: 0 10px 0 10px;
+  }
+}
+

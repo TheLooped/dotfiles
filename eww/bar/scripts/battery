@@ -47,11 +47,11 @@ update_battery_icon() {
     else
     case $battery_level in
         [0-9])
-            icon="󰢜" ;; # Set icon for 0-9 range
+            icon="󱎗" ;; # Set icon for 0-9 range
         1[0-9])
-            icon="󰂆" ;; # Set icon for 10-19 range
+            icon="󰢜" ;; # Set icon for 10-19 range
         2[0-9])
-            icon="" ;; # Set icon for 20-29 range
+            icon="󰂆" ;; # Set icon for 20-29 range
         3[0-9])
             icon="󰂇" ;; # Set icon for 30-39 range
         4[0-9])
@@ -86,8 +86,6 @@ get_battery_class() {
         echo "green"
     fi
 }
-
-
 notify_battery() {
     local capacity=$(get_battery_level)
     local status=$(get_battery_status)

@@ -5,4 +5,4 @@
 time=$(date '+%I:%M %p')
 
 # Update the clock widget
-echo "$time"
+echo "󱑃  $time"
