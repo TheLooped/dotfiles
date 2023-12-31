@@ -1,0 +1,41 @@
+#!/bin/bash
+
+
+get_icon() {
+    local is_muted=$(wpctl get-volume @DEFAULT_SINK@ | grep -q '\[MUTED\]' && echo "true" || echo "false")
+
+    if [ "$is_muted" == "true" ]; then
+        echo "󰝟"  # Muted icon
+    else
+        echo ""  # Unmuted icon
+    fi
+}
+
+get_class() {
+    local muted=$(wpctl is-muted)
+    [ "$muted" == 'true' ] && echo "red" || echo "blue"
+}
+
+get_percentage() {
+    wpctl volume
+}
+
+get_vol() {
+    wpctl volume | tr -d '%'
+}
+
+case "$1" in
+    icon) get_icon ;;
+    class) get_class ;;
+    percentage) get_percentage ;;
+    vol) get_vol ;;
+    muted) wpctl is-muted ;;
+    toggle-muted) wpctl toggle-mute ;;
+    set) val=$(echo "$2" | tr -d '.')
+         [ "$val" -gt 100 ] && val=100
+         wpctl set-volume "$val%"
+         ;;
+    *) echo "Invalid argument" >&2
+       exit 1
+       ;;
+esac

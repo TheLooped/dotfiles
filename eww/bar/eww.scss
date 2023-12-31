@@ -5,48 +5,90 @@
 }
 
 .bar {
+    border: 2px solid $dodger-blue;
     background-color: $bg;
     border-radius: 10px;
 }
 
 .workspace {
-  padding: 0px 7px 0px 7px;
-  margin: 0px 7px 0px 7px;
-  font-size: 18px;
+    padding: 0px 7px 0px 7px;
+    margin: 0px 7px 0px 7px;
+    font-size: 18px;
 }
 
 .workspace-focused {
-  font-size: 20px;
-  font-family: "Maple Mono NF";
-  padding: 0px 4px;
-  color: $dodger-blue;
+    font-size: 20px;
+    font-family: "Maple Mono NF";
+    padding: 0px 4px;
+    color: $dodger-blue;
 }
 
 .workspace-occupied {
-  font-size: 20px;
-  font-family: "Maple Mono NF";
-  padding: 0px 4px;
-  color: $mint;
+    font-size: 20px;
+    font-family: "Maple Mono NF";
+    padding: 0px 4px;
+    color: $mint;
 
 
-  transition: color 0.5s ease-in-out;
-
-  &:hover {
-    color: #0DAC15;
     transition: color 0.5s ease-in-out;
-  }
+
+    &:hover {
+        color: #0DAC15;
+        transition: color 0.5s ease-in-out;
+    }
 }
 
 .workspace-empty {
-  font-size: 20px;
-  font-family: "Maple Mono NF";
-  padding: 0px 4px;
-  color: $pink;
+    font-size: 20px;
+    font-family: "Maple Mono NF";
+    padding: 0px 4px;
+    color: $pink;
 
-  transition: color 0.5s ease-in-out;
-  &:hover {
-    color: #AA5AAB;
     transition: color 0.5s ease-in-out;
-  }
+    &:hover {
+        color: #AA5AAB;
+        transition: color 0.5s ease-in-out;
+    }
 }
 
+.wintitle {
+    font-family: "Monospace Argon";
+    font-size: 17px;
+    font-weight: 700;
+    padding: 0px 7px;
+    color: $fawn;
+}
+
+.actionsbox {
+    border-radius: 10px;
+    font-family: 'Monospace Argon';
+    font-size: 20px;
+    margin: 0px 8px 0px 8px;
+    padding: 0px 10px 0px 10px;
+    transition: all ease-in-out 0.5s;
+
+    &:hover {
+        background-color: $alt-bg;
+        margin: 0px 8px 0px 8px;
+        padding: 14px;
+    }
+}
+.network-widget{
+    color: $light-blue;
+    font-size: 20px;
+}
+.volume-widget {
+    color: $light-blue;
+    font-size: 20px;
+}
+.battery-widget {
+    color: $light-blue;
+    font-size: 20px;
+}
+
+.clock {
+    color: $light-blue;
+    font-family: 'Monospace Krypton';
+    font-size: 17px;
+    font-weight: 700;
+}

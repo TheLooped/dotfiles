@@ -1,13 +1,27 @@
 (defvar eww "/usr/local/bin/eww -c $HOME/.config/eww/bar")
 
 (deflisten workspace "scripts/workspace")
+(deflisten wintitle "scripts/wintitle")
+(defpoll clock  :interval "1s" "scripts/clock")
+
+;;(defpoll network_status :interval "1s" "scripts/network status")
+(defpoll network_icon :interval "1s" "scripts/network icon")
+;;(defpoll network_ssid :interval "1s" "scripts/network ssid")
+
+(defpoll volume_icon :interval "0.1s" "scripts/volume icon")
+;;(defpoll volume :interval "1s" "scripts/volume percentage")
+;;(defpoll volume_value :interval "1s" "scripts/volume vol")
+
+(defpoll battery_icon :interval "1s" "scripts/battery icon")
+;;(defpoll battery_percentage :interval "1s" "scripts/battery percentage")
+;;(defpoll battery_status :interval "1s" "scripts/battery status")
 
 (defwindow bar
   :monitor 0 ;; Optional for X11
   :stacking "fg"
   :exclusive true
   :windowtype "dock"
-  :reserve (struts :distance "35px" :side "top")
+  :reserve (struts :distance "40px" :side "top")
   :wm-ignore false
   :geometry (geometry
               :x "0%"
@@ -21,7 +35,7 @@
 (defwidget bar []
   (box :class "bar"
     (left)
-       ))
+    (right)))
 
 (defwidget left []
   (box :orientation "h"
@@ -29,6 +43,16 @@
        :halign "start"
        :class "left"
        (workspaces)
+       (wintitle)
+       ))
+
+(defwidget right []
+  (box :orientation "h"
+       :space-evenly false
+       :halign "end"
+       :class "right"
+       (clock)
+       (actionsbox)
        ))
 
 (defwidget workspaces []
@@ -37,3 +61,42 @@
        :valign "center"
        :halign "center"
        (literal :content workspace)))
+
+(defwidget wintitle []
+	(label
+		:class "wintitle"
+		:limit-width 21
+		:text wintitle
+	)
+)
+
+;; todo add functionality for actionsbox and its widgets
+(defwidget network-widget []
+    (eventbox :class "network-widget"
+  (label :text "${network_icon}" :style "margin-left: 15px; margin-right: 15px;")))
+
+(defwidget volume-widget []
+    (eventbox :class "volume-widget"
+  (label :text "${volume_icon}" :style "margin-right: 15px;")))
+
+(defwidget battery-widget []
+ (eventbox :class "battery-widget"
+  (label :text "${battery_icon}" :style "margin-right: 15px;")))
+
+(defwidget actionsbox []
+  (eventbox :class "actionsbox"
+    (box :orientation "h"
+         :space-evenly false
+         :spacing 13
+         (network-widget)
+         (volume-widget)
+         (battery-widget)
+         )))
+
+;;todo make better
+(defwidget clock [] 
+    (box :class "clock"
+    (label :text clock)))
+
+
+
