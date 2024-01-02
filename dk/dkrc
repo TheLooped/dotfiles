@@ -44,6 +44,17 @@ if hash compfy >/dev/null 2>&1; then
 fi
 
 
+if hash eww >/dev/null 2>&1; then
+	pkill eww
+    eww open bar
+fi
+
+
+if hash dunst >/dev/null 2>&1; then
+	pkill dunst
+    dunst &
+fi
+
 {
 
 # WorkSpace
