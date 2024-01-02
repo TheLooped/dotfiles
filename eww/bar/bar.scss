@@ -1,5 +1,3 @@
-@import 'colors';
-
 * {
     all: unset;
 }
@@ -60,14 +58,14 @@
 }
 
 .actionsbox {
-    border-radius: 10px;
     font-family: 'Monospace Argon';
     font-size: 20px;
     margin: 0px 8px 0px 8px;
     padding: 0px 10px 0px 10px;
-    transition: all ease-in-out 0.5s;
+    transition: all ease-in-out 0.4s;
 
     &:hover {
+        border-radius: 40px 0px 40px 0px;
         background-color: $alt-bg;
         margin: 0px 8px 0px 8px;
         padding: 14px;
@@ -113,3 +111,8 @@
   }
 }
 
+.powerbutton {
+    color: $mauve;
+    font-size: 22px;
+    font-family: "Monospace Argon";
+}

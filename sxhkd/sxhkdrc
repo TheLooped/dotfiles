@@ -1,8 +1,14 @@
 ## Programs
+#
+super + e
+    $HOME/.config/eww/launch.sh
+
+super + shift + e
+    eww kill -c ~/.config/eww/powermenu
 
 # launcher
 super + p
-    rofi -superi drun,run -show drun -font "Maple Mono NF 13" -show-icons	
+    rofi -show drun
 
 # terminal
 super + shift + Return
@@ -23,11 +29,14 @@ super + d
 
 # dedicated volume keys
 {XF86AudioRaiseVolume,XF86AudioLowerVolume}
-	pamixer {-i,-d} 2
+    pamixer --sink 52 { -i 5, -d 5}
+
+{XF86AudioMute}
+    wpctl set-mute 52 toggle
 
 # dedicated backlight keys
 {XF86MonBrightnessUp,XF86MonBrightnessDown}
-	brighntessctl s {+10,-10}
+	brighntessctl s {5%+,5%-}
 
 # reload sxhkd
 super + shift + x
@@ -58,10 +67,9 @@ super + {q,space,Tab}
 # toggle fullscreen and fake fullscreen (enable manipulating fullscreen window)
 {_,super + }F11
 	dkcmd win {full,fakefull}
-
-# toggle floating or sticky
-super + shift + {space,s}
-	dkcmd win {float,stick}
+# toggle floating, sticky, or scratchpad
+super + shift + {space,s,u}
+	dkcmd win {float,stick,scratch}
 
 # move window, signed (+/-) for relative changes, for tiled windows
 # y coord changes will move the window up/down the stack
