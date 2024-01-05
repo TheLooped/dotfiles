@@ -1,0 +1,62 @@
+(defwindow powermenu
+  :stacking "fg"
+  :wm-ignore true
+  :geometry (geometry
+              :x "0%" 
+              :y "0%"
+              :width "40%"
+              :height "20%"
+              :anchor "center")
+  (menu_event))
+
+(defwidget menu_event []
+  (eventbox
+    :class "menu-handler"
+    :onhoverlost "scripts/actions powermenu"
+    (menu)
+    )
+  )
+
+(defwidget menu []
+  (box
+    :class "powmenu"
+    :orientation "h"
+    :spacing 10
+    :space-evenly true
+    (button
+      :class "lock"
+      :onclick "betterlockscreen -l"
+      (label
+        :class "lock-icon"
+        :text ""
+        )
+      )
+
+    (button
+      :class "logout"
+      :onclick "dkcmd exit"
+      (label
+        :class "logout-icon"
+        :text ""
+        )
+      )
+
+    (button
+      :onclick "loginctl poweroff "
+      :class "shutdown"
+      (label
+        :class "shutdown-icon"
+        :text ""
+        )
+      )
+
+    (button
+      :onclick "loginctl reboot"
+      :class "reboot"
+      (label
+        :class "reboot-icon"
+        :text ""
+        )
+      )
+    )
+  )

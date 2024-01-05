@@ -1,0 +1,8 @@
+
+#!/bin/bash
+
+# Get the current time and convert it to the desired format
+time=$(date '+%I:%M %p')
+
+# Update the clock widget
+echo "󱑃  $time"

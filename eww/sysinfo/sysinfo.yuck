@@ -1,0 +1,93 @@
+(defwindow sysinfo
+  :stacking "fg"
+  :exclusive false
+  :windowtype "normal"
+  :wm-ignore false
+  :geometry (geometry
+  :x "69%"
+  :y "10%"
+  :width "30%"
+  :height "40%"
+  :anchor "top left")
+  (sysmenu_event))
+
+(defwidget sysmenu_event []
+  (eventbox
+    :class "sysmenu-handler"
+    :onhoverlost "scripts/actions sysmenu"
+    (sysmenu)
+    )
+  )
+
+(defwidget sysmenu []
+  (box
+    :class "sysmenu"
+    :orientation "v"
+    :spacing 10
+    :spacing-evenly true
+    (box
+      :class "header"
+      :orientation "h"
+      :valign "start"
+      (battery)
+      (username)
+      (close)
+      )
+    (box
+      :class "body"
+      :valign "start"
+      (box
+        :class "settings"
+        (network)
+        )
+      )
+    )
+  )
+
+(defwidget battery []
+  (box :class "battery"
+       :halign "start"
+    (label
+      :class "battery-label"
+      :text "${battery_icon} ${battery_percentage}%")
+    )
+  )
+
+(defwidget close []
+  (eventbox
+    :class "close"
+    :halign "end"
+    (label
+      :class "close-icon"
+      :text ""
+      )
+    )
+  )
+
+(defwidget username []
+  (box
+    :halign "center"
+    :class "username"
+    (label
+      :text "${username}")
+    )
+  )
+
+
+(defwidget network []
+  (box
+    :class "network"
+    :orientation "v"
+    (box
+      :class "network-icon"
+      (label
+        :text "")
+      )
+    (box
+      :class "network-label"
+      (label
+        :limit-width 12
+        :text "${network_ssid}")
+      )
+    )
+  )

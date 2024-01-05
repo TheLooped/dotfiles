@@ -1,3 +1,3 @@
 #!/bin/bash
- 
-eww open -c ~/.dotfiles/eww/bar bar &
+
+eww open --config ~/.config/eww/powermenu powermenu --toggle
