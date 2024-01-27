@@ -5,11 +5,14 @@ term = "ghostty"
 
 fullscreen = false
 
-#background-opacity = 0.8
+#background-opacity = 1
 
 cursor-style = block
 
 cursor-style-blink = true
+
+gtk-titlebar = false
+
 
 # Behavior 
 
@@ -21,6 +24,8 @@ clipboard-read = "allow"
 
 clipboard-paste-protection = false
 
+gtk-single-instance = true
+
 # Integration
 
 shell-integration-features = "no-cursor"
@@ -30,26 +35,28 @@ shell-integration-features = "no-cursor"
 
 window-theme = "dark"
 
-window-decoration = false
-
 window-padding-x = 0
 
 window-padding-y = 0
 
+window-save-state = "never"
+
 # Fonts
 
-font-family = "Maple Mono NF"
-font-family-bold = "Maple Mono NF"
-#font-family = "Monaspace Radon Var"
-#font-family-bold = "Monaspace Argon Var"
-font-style = "BoldItalic"
-font-style-bold = "Bold"
+font-family = "Cartograph CF"
+font-family-bold = "Pitagon Sans Mono "
+font-family-italic = "Monaspace Radon"
 
-font-size = 11
+
+font-style = "Bold Italic"
+font-style-bold = "Bold"
+font-style-italic = "Italic"
+
+font-size = 13
 
 font-thicken = true
 
-font-variation = wght=800
+font-variation = wght=600
 
 # Keybinds
 
