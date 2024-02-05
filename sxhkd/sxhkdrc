@@ -20,6 +20,9 @@ super + Return
 super + b
     brave-browser-stable
 
+super + f
+    floorp
+
 super + d
     discord
 
@@ -65,7 +68,7 @@ super + {q,space,Tab}
 	dkcmd win {kill,swap,cycle}
 
 # toggle fullscreen and fake fullscreen (enable manipulating fullscreen window)
-{_,super + }F11
+{super + alt,super + shift +}y
 	dkcmd win {full,fakefull}
 # toggle floating, sticky, or scratchpad
 super + shift + {space,s,u}
