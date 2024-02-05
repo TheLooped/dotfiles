@@ -1,122 +1,101 @@
 # General
-term = "ghostty"
+term = xterm-ghostty
+title = Ghostty
+class = Ghostty
+x11-instance-name = ghostty
+working-directory = home
 
 # Appearance
-
+background-opacity = 1
+background-blur-radius = 20
+unfocused-split-opacity = 0.7
 fullscreen = false
-
-#background-opacity = 1
-
 cursor-style = block
 
-cursor-style-blink = true
-
-gtk-titlebar = false
-
-
-# Behavior 
-
+# Behavior
 mouse-hide-while-typing = true
-
-confirm-close-surface = false
-
-clipboard-read = "allow"
-
-clipboard-paste-protection = false
-
-gtk-single-instance = true
+desktop-notifications = true
 
 # Integration
-
-shell-integration-features = "no-cursor"
-
-
-# Window
-
-window-theme = "dark"
-
-window-padding-x = 0
-
-window-padding-y = 0
-
-window-save-state = "never"
+shell-integration = detect
+shell-integration-features = no-cursor,sudo
 
 # Fonts
-
 font-family = "Cartograph CF"
-font-family-bold = "Pitagon Sans Mono "
+font-family-bold = "Pitagon Sans Mono" 
 font-family-italic = "Monaspace Radon"
 
-
-font-style = "Bold Italic"
+font-style = "Demi Bold Italic"
 font-style-bold = "Bold"
 font-style-italic = "Italic"
 
-font-size = 13
+font-size = 12
 
-font-thicken = true
+grapheme-width-method = unicode
 
-font-variation = wght=600
+# Window
+window-padding-x = 0
+window-padding-y = 0
+window-padding-balance = true
 
-# Keybinds
+window-inherit-working-directory = true
+window-inherit-font-size = true
+window-decoration = true
+
+window-theme = dark
+
+# Clipboard Settings
+clipboard-read = ask
+clipboard-write = allow
+clipboard-trim-trailing-spaces = true
+clipboard-paste-protection = false
+clipboard-paste-bracketed-safe = true
+copy-on-select = false
+confirm-close-surface = false
+
+# GTK Settings
+gtk-single-instance = desktop
+gtk-wide-tabs = true
+gtk-adwaita = false
+gtk-titlebar = false
 
 # Palette
 
 background = #00000e
-
 foreground = #CFD8DD
-
 cursor-color = #FFA594
-
 selection-background = #82CAFA 
-
 selection-foreground = #000000
 
 # Lavender
 palette = 0=#CCA4E0
-
 # Peachy Pink
 palette = 1=#FFA8B6
-
 # Mint
-
 palette = 2=#A6FFC8
-
 # Lemon
 palette = 3=#FFF48C
-
 # Baby Blue
 palette = 4=#85D3FF
-
 # Lilac
 palette = 5=#C993CC
-
 # Turquoise
 palette = 6=#77ECCA
-
 # Cream
 palette = 7=#FFF8D4
-
 # Bright Lavender
 palette = 8=#E5B8FF
-
 # Bright Peachy Pink
 palette = 9=#FFA8B6
-
 # Neon Mint
 palette = 10=#B5FFD8
-
 # Bright Lemon
 palette = 11=#FFFF4D
-
 # Bright Baby Blue
 palette = 12=#85D3FF
-
 # Bright Lilac
 palette = 13=#DA93EC
-
 # Bright Turquoise
 palette = 14=#00F0A6
-
 # Off-white
 palette = 15=#FFFFE9
