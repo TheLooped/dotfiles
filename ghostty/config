@@ -1,20 +1,12 @@
 # General
 term = xterm-ghostty
-title = Ghostty
-class = Ghostty
-x11-instance-name = ghostty
-working-directory = home
 
 # Appearance
-background-opacity = 1
-background-blur-radius = 20
-unfocused-split-opacity = 0.7
 fullscreen = false
 cursor-style = block
 
 # Behavior
 mouse-hide-while-typing = true
-desktop-notifications = true
 
 # Integration
 shell-integration = detect
@@ -29,9 +21,7 @@ font-style = "Demi Bold Italic"
 font-style-bold = "Bold"
 font-style-italic = "Italic"
 
-font-size = 12
-
-grapheme-width-method = unicode
+font-size = 11
 
 # Window
 window-padding-x = 0
@@ -55,7 +45,6 @@ confirm-close-surface = false
 
 # GTK Settings
 gtk-single-instance = desktop
-gtk-wide-tabs = true
 gtk-adwaita = false
 gtk-titlebar = false
 
