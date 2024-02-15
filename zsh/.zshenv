@@ -5,3 +5,4 @@ export PATH=$PATH:$HOME/treesitter-jule/node_modules/tree-sitter-cli/
 
 
 #
+. "$HOME/.cargo/env"
