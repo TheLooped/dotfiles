@@ -14,14 +14,18 @@ shell-integration-features = no-cursor,sudo
 
 # Fonts
 font-family = "Cartograph CF"
+#font-family-bold = "Pitagon Sans Mono" 
 font-family-bold = "Pitagon Sans Mono" 
 font-family-italic = "Monaspace Radon"
 
-font-style = "Demi Bold Italic"
-font-style-bold = "Bold"
+font-style = "Regular"
+font-style-bold = "SemiBold"
 font-style-italic = "Italic"
 
-font-size = 11
+font-size = 12
+
+font-thicken = true
+font-variation = wght=900
 
 # Window
 window-padding-x = 0

@@ -55,6 +55,7 @@ if hash dunst >/dev/null 2>&1; then
     dunst &
 fi
 
+pipewire &
 {
 
 # WorkSpace

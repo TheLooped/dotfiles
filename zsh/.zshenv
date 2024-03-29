@@ -1,8 +1,6 @@
+# Set the PATH to include local binaries
 export PATH=$HOME/.local/bin:$PATH
-export PATH=$PATH:$HOME/treesitter-jule/node_modules/tree-sitter-cli/
 
-#export PATH=$HOME/.local/share/hysp/bin:$PATH
-
-
-#
+# Set the ZSH configuration directory
+export ZSH="$HOME/.oh-my-zsh"
 . "$HOME/.cargo/env"
