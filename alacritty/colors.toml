@@ -1,0 +1,53 @@
+[colors]
+transparent_background_colors = false
+
+[colors.bright]
+black = "#85a2ff"
+blue = "#85D3FF"
+cyan = "#77ECCA"
+green = "#A6FFC8"
+magenta = "#CCA4E0"
+red = "#FFA8B6"
+white = "#FFF8D4"
+yellow = "#FFFF4D"
+
+[colors.dim]
+black = "#1d1b1f"
+blue = "#006a60"
+cyan = "#4d7770"
+green = "#5f6f3a"
+magenta = "#51005f"
+red = "#712b2b"
+white = "#4f514f"
+yellow = "#716900"
+
+[colors.line_indicator]
+foreground = "None"
+background = "#FFA594"
+
+[colors.normal]
+black = "#1d1f21"
+blue = "#68f1fe"
+cyan = "#78fff2"
+green = "#86ff7c"
+magenta = "#ea76ff"
+red = "#ff758f"
+white = "#c5c8c6"
+yellow = "#fff672"
+
+[colors.primary]
+background = "#00000e"
+bright_foreground = "#FFF8D4"
+dim_foreground = "#4f514f"
+foreground = "#CFD8DD"
+
+[colors.selection]
+background = "#475F80"
+text = "#CFD8DD"
+
+[colors.hints]
+start = { foreground = "#FFF8D4", background = "#CCA4E0" }
+end = { foreground = "#00000e", background = "#FFA8B6" }
+
+[colors.cursor]
+cursor = "#8e8e8e"

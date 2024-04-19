@@ -1,0 +1,32 @@
+import = ["/home/loop/.config/alacritty/fonts.toml", "/home/loop/.config/alacritty/colors.toml"]
+ipc_socket = true
+live_config_reload = true
+
+[cursor]
+blink_interval = 350
+thickness = 0.15
+unfocused_hollow = true
+
+[cursor.style]
+blinking = "On"
+shape = "Block"
+
+[env]
+TERM = "alacritty"
+
+[scrolling]
+history = 3000
+multiplier = 3
+
+[window]
+decorations = "full"
+dynamic_padding = false
+dynamic_title = false
+opacity = 1.0
+startup_mode = "Windowed"
+title = "Alacritty"
+
+[keyboard]
+bindings = [
+    { key = "N", mods = "Control | Shift", action = "SpawnNewInstance"  }
+]

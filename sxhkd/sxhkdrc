@@ -12,7 +12,7 @@ super + p
 
 # terminal
 super + shift + Return
-	st
+	wezterm	
 
 super + Return
 	ghostty

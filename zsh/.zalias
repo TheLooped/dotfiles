@@ -4,13 +4,13 @@ alias c='clear'
 alias r='reset'
 alias '?'="whoami"
 
-alias ls='pls --grid=true --down=true'
+#alias ls='pls --grid=true --down=true'
 #alias ls='eza --grid --icons --all'
-alias lsd='pls --det=size --det=user --det=group -H true -i true --align=true --exclude="^\..*"'
-alias lsc='pls --grid=true --down=true -H true -i true --align=true --only="^\..*"'
-alias lsi='pls --det=perm --det=user --det=group --det=size -H true -i true --align=true'
+#alias lsd='pls --det=size --det=user --det=group -H true -i true --align=true --exclude="^\..*"'
+#alias lsc='pls --grid=true --down=true -H true -i true --align=true --only="^\..*"'
+#alias lsi='pls --det=perm --det=user --det=group --det=size -H true -i true --align=true'
 
-alias tree=' eza -T --level=2 --icons --color --all --group-directories-first --ignore-glob="**/.git"'
+#alias tree=' eza -T --level=2 --icons --color --all --group-directories-first --ignore-glob="**/.git"'
 
 alias cat='bat'
 alias less='bat'

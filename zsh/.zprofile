@@ -1,8 +1,9 @@
 # Set the preferred text editor
 export EDITOR=/usr/bin/nvim
 
-# Set the PLS configuration file path
-export PLS_CONFIG=$HOME/.config/pls/pls.yml
+# Onyx Variables
+export ONYX_PATH="/home/loop/.onyx"
+export PATH="$ONYX_PATH/bin:$PATH"
 
 # Set the language and locale settings
 export LANG=en_US.UTF-8

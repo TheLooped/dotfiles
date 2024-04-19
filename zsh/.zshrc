@@ -1,4 +1,3 @@
-
 HYPHEN_INSENSITIVE="true"
 
 DISABLE_LS_COLORS="false"
@@ -30,7 +29,6 @@ function nvims() {
   fi
   NVIM_APPNAME=$config nvim $@
 }
-
 
 
 export NVM_DIR="$HOME/.nvm"
