@@ -1,1 +1,0 @@
-# dot to the chopper

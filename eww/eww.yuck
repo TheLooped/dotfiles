@@ -1,5 +1,0 @@
-(include "variables.yuck")
-
-(include "bar/bar.yuck")
-(include "powermenu/powermenu.yuck")
-(include "sysinfo/sysinfo.yuck")
