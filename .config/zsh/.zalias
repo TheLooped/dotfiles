@@ -1,16 +1,14 @@
 #aliases
 
+# Useful aliases
 alias c='clear'
 alias r='reset'
 alias '?'="whoami"
 
-#alias ls='pls --grid=true --down=true'
-#alias ls='eza --grid --icons --all'
-#alias lsd='pls --det=size --det=user --det=group -H true -i true --align=true --exclude="^\..*"'
-#alias lsc='pls --grid=true --down=true -H true -i true --align=true --only="^\..*"'
-#alias lsi='pls --det=perm --det=user --det=group --det=size -H true -i true --align=true'
+alias ls='ls --color'
 
-#alias tree=' eza -T --level=2 --icons --color --all --group-directories-first --ignore-glob="**/.git"'
+
+alias ..='cd ..'
 
 alias cat='bat'
 alias less='bat'
@@ -19,9 +17,9 @@ alias rm='rm -i'
 alias update='sudo xbps-install -Suvy'
 alias fixfont='sudo fc-cache -fv'
 
+alias empower='chmod +x'
 
 
-# required functions
 ex ()
 {
   if [ -f $1 ] ; then

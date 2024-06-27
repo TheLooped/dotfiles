@@ -2,12 +2,12 @@ configuration {
 	modi: "window,drun,run";
 	font: "Monaspace Radon 12";
 	show-icons: true;
-	icon-theme: "Papirus";
+	icon-theme: "Qogir-dark";
 	drun-match-fields: "name,generic,exec,categories,keywords";
 	drun-display-format: "{icon} {name}";
 	sort: true;
 	sorting-method: "fzf";
-	click-to-exit: false;
+	click-to-exit: true;
 	steal-focus: true;
 	display-window:"Window" ;
     display-drun: "  ";

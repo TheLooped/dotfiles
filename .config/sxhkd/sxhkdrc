@@ -12,7 +12,7 @@ super + p
 
 # terminal
 super + shift + Return
-	wezterm	
+	st
 
 super + Return
 	ghostty
@@ -32,14 +32,18 @@ super + d
 
 # dedicated volume keys
 {XF86AudioRaiseVolume,XF86AudioLowerVolume}
-    pamixer --sink 52 { -i 5, -d 5}
+    pamixer {-i,-d} 5
 
 {XF86AudioMute}
-    wpctl set-mute 52 toggle
+    pamixer -t
 
 # dedicated backlight keys
 {XF86MonBrightnessUp,XF86MonBrightnessDown}
 	brighntessctl s {5%+,5%-}
+
+# change keyboard layout
+super + {c,u}
+    switch_layout {can,us}
 
 # reload sxhkd
 super + shift + x
@@ -67,9 +71,14 @@ super + {j,k}
 super + {q,space,Tab}
 	dkcmd win {kill,swap,cycle}
 
-# toggle fullscreen and fake fullscreen (enable manipulating fullscreen window)
-{super + alt,super + shift +}y
-	dkcmd win {full,fakefull}
+# # toggle fullscreen and fake fullscreen (enable manipulating fullscreen window)
+# {_,super + shift }F11
+# 	dkcmd win {full,fakefull}
+super + shift + f
+    dkcmd win full
+ctrl + shift + f
+    dkcmd win fakefull
+
 # toggle floating, sticky, or scratchpad
 super + shift + {space,s,u}
 	dkcmd win {float,stick,scratch}
@@ -93,7 +102,7 @@ super + {_,shift + ,ctrl + }{bracketleft,bracketright,BackSpace,Left,Right}
 	dkcmd ws {view,send,follow} {prev,next,last,prevne,nextne}
 
 # change active workspace layout or cycle between them
-super + {m,g,w,f,c}
+super + alt {m,g,w,f,c}
 	dkcmd set layout {mono,grid,dwindle,none,cycle}
 
 # change gap width
@@ -103,3 +112,5 @@ super + {equal,minus}
 # change border widths
 super + ctrl + {equal,minus}
 	dkcmd set border {width} {+1,-1}
+
+# vim:ft=sxhkdrc
