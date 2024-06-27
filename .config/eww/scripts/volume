@@ -1,0 +1,64 @@
+#!/bin/bash
+
+# Ensure WirePlumber is installed and available in the PATH
+
+SINK="@DEFAULT_SINK@"
+WPCTL="wpctl"
+
+
+is_muted() {
+ $WPCTL get-volume @DEFAULT_SINK@ | grep -q '\[MUTED\]' && echo "true" || echo "false"
+}
+
+get_percentage () {
+  local muted=$(is_muted)
+  if [[ $muted == 'yes' ]]; then
+    echo 0%
+  else
+    per=$($WPCTL get-volume 52% | awk '{print $2}')
+    echo "${per}%"
+  fi
+}
+
+
+get_icon() {
+  local vol=$(get_percentage)
+  if [ "$vol" == "0%" ]; then
+    echo "󰝟"
+  else
+    echo "" 
+  fi
+}
+
+get_vol() {
+  local percent=$(get_percentage)
+  echo $percent | tr -d '%'
+}
+
+case $1 in
+"icon")
+  get_icon
+  ;;
+"percentage")
+    get_percentage
+    ;;
+"vol")
+  get_vol
+  ;;
+"muted")
+  is_muted
+  ;;
+"toggle-muted")
+  $WPCTL set-mute $SINK toggle
+  ;;
+"set")
+  val=$(echo $2 | tr '.' ' ' | awk '{print $1}')
+  if test $val -gt 100; then
+    val=100
+  fi
+  $WPCTL set-volume $SINK $val%
+  ;;
+*)
+  echo "Unknown command: $1"
+  ;;
+esac

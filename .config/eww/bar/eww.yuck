@@ -1,0 +1,153 @@
+(defvar eww "/usr/local/bin/eww -c $HOME/.config/eww/bar")
+(defvar wifi_rev false)
+
+(deflisten workspace "scripts/workspace")
+(deflisten layout "scripts/layout") 
+
+(defpoll battery :interval "15s" "./scripts/battery --bat")
+
+(defpoll COL_WLAN :interval "2s" "~/.config/eww/bar/scripts/wifi --COL")
+(defpoll ESSID_WLAN :interval "2s" "~/.config/eww/bar/scripts/wifi --ESSID")
+(defpoll WLAN_ICON :interval "0.1s" "~/.config/eww/bar/scripts/wifi --ICON")
+
+
+(defwindow bar
+  :monitor 0 ;; Optional for X11
+  :stacking "fg"
+  :exclusive true
+  :windowtype "dock"
+  :reserve (struts :distance "50px" :side "top")
+  :wm-ignore false
+  :geometry (geometry
+              :x "0%"
+              :y "0%"
+              :width "100%"
+              :height "40px"
+              :anchor "top center")
+  (bar))
+
+
+(defwidget left []
+  (box :orientation "h"
+       :space-evenly false
+       :halign "start"
+       :class "left"
+       (logo)
+       (layout)
+       ))
+
+(defwidget center []
+  (box :orientation "h"
+       :space-evenly false
+       :halign "center"
+       :class "center"
+       (workspaces)
+       ))
+
+(defwidget right []
+  (box :orientation "h"
+       :space-evenly false
+       :halign "end"
+       :class "right"
+       (clock)
+       (wifi)
+       (bat)
+      ))
+
+(defwidget bar []
+  (box :class "bar"
+       :orientation "h"
+       (left)
+       (center)
+       (right)
+       ))
+
+(defwidget bat []
+		(box 
+          :class "bat" 
+          :vexpand "false" 
+          :hexpand "false" 
+            (circular-progress :value battery
+                :class "batbar"
+                :thickness 4
+            (button 
+                :class "iconbat"
+                :limit-width 2
+                :tooltip "battery on ${battery}%"
+                :show_truncated false
+                :wrap false
+                ""))))
+
+
+(defwidget clock []
+  (box
+    :class "clock"
+    :space-evenly false
+    :halign "center"
+    (label 
+      :class "time" 
+      :text {formattime(EWW_TIME, "%H", "America/Jamaica")}
+    )
+    (box 
+      :class "timebox" 
+      :valign "center" 
+      :orientation "v" 
+      (box :class "timesep_icon" "⧭")
+    )
+    (label 
+      :class "time" 
+      :text {formattime(EWW_TIME, "%M", "America/Jamaica")}
+    )
+  )
+)
+ 
+(defwidget wifi [] 
+  (eventbox 
+    :class "wifibox"
+    :onhover "${eww} update wifi_rev=true"
+	:onhoverlost "${eww} update wifi_rev=false"
+    :valign "center"
+    :halign "center"
+    (box :class "wifi_icon"
+      :vexpand "false" 
+      :hexpand "false" 
+      :space-evenly "false"
+      (button 
+        :style "color: ${COL_WLAN};" WLAN_ICON)
+	(revealer 
+      :transition "slideright"
+	  :reveal wifi_rev
+	  :duration "250ms"
+	(label
+      :class "name"
+	  :text ESSID_WLAN
+	  )))))
+
+
+(defwidget workspaces []
+  (box :class "workspace"
+       :orientation "h"
+       :valign "center"
+       :halign "center"
+       (literal :content workspace)))
+
+(defwidget logo []
+  (box :orientation "h"
+       :valign "center"
+       :halign "center"
+       :class "logo"
+       :tooltip "Launch apps"
+    (button :class "dispatcher" :onclick "rofi -show drun -font 'Maple Mono NF 13' -show-icons &" "")
+  )
+)
+
+(defwidget layout []
+  (box :class "layouts"
+       :orientation "h"
+       :valign "center"
+       :halign "center"
+    (eventbox
+      (button 
+        :tooltip "Change current layout"
+        :onclick "$HOME/.config/eww/scripts/cycle_layout"
+        (label :text layout :justify "center")))))

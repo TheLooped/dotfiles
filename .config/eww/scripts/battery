@@ -1,0 +1,120 @@
+#!/bin/bash
+
+get_battery_status() {
+    local acpi=$(acpi -b)
+    echo "$acpi" | grep -w 0: | grep -c Discharging
+}
+
+get_battery_time() {
+    local acpi=$(acpi -b)
+    echo "$acpi" | awk '{print $5}' | tr -d ','
+}
+
+get_battery_level() {
+    cat /sys/class/power_supply/BAT0/capacity
+}
+
+update_battery_icon() {
+    local battery_level=$(get_battery_level)
+    local state=$(get_battery_status)
+    local icon
+
+    if [ "$state" -eq 1 ]; then
+    case $battery_level in
+        [0-9])
+            icon="󰁺" ;; # Set icon for 0-9 range
+        1[0-9])
+            icon="󰁻" ;; # Set icon for 10-19 range
+        2[0-9])
+            icon="󰁼" ;; # Set icon for 20-29 range
+        3[0-9])
+            icon="󰁽" ;; # Set icon for 30-39 range
+        4[0-9])
+            icon="󰁾" ;; # Set icon for 40-49 range
+        5[0-9])
+            icon="󰁿" ;; # Set icon for 50-59 range
+        6[0-9])
+            icon="󰂀" ;; # Set icon for 60-69 range
+        7[0-9])
+            icon="󰂁" ;; # Set icon for 70-79 range
+        8[0-9])
+            icon="󰂂" ;; # Set icon for 80-89 range
+        9[0-9])
+            icon="󰁹" ;; # Set icon for 90-99 range
+        *)
+            echo "󰁹" ;;
+    esac
+    else
+    case $battery_level in
+        [0-9])
+            icon="󱎗" ;; # Set icon for 0-9 range
+        1[0-9])
+            icon="󰢜" ;; # Set icon for 10-19 range
+        2[0-9])
+            icon="󰂆" ;; # Set icon for 20-29 range
+        3[0-9])
+            icon="󰂇" ;; # Set icon for 30-39 range
+        4[0-9])
+            icon="󰂈" ;; # Set icon for 40-49 range
+        5[0-9])
+            icon="󰢝" ;; # Set icon for 50-59 range
+        6[0-9])
+            icon="󰂉" ;; # Set icon for 60-69 range
+        7[0-9])
+            icon="󰢞" ;; # Set icon for 70-79 range
+        8[0-9])
+            icon="󰂊" ;; # Set icon for 80-89 range
+        9[0-9])
+            icon="󰂋" ;; # Set icon for 90-99 range
+        *)
+            echo "󰂅" ;;
+    esac
+    fi
+
+    echo "$icon"
+}
+
+
+get_battery_class() {
+    local percentage=$(get_battery_level | tr -d '%')
+
+    if [ "$percentage" -le 20 ]; then
+        echo "red"
+    elif [ "$percentage" -le 50 ]; then
+        echo "yellow"
+    else
+        echo "green"
+    fi
+}
+notify_battery() {
+    local capacity=$(get_battery_level)
+    local status=$(get_battery_status)
+    local timeout=5000
+    local category="Battery"
+    
+    case $status in
+        "Discharging")
+            if [ "$capacity" -le 10 ]; then
+                notify-send -u critical -t "$timeout" -c "$category" "Low battery warning" "Battery level: $capacity%"
+            elif [ "$capacity" -le 30 ]; then
+                notify-send -u normal -t "$timeout" -c "$category" "Battery is getting low" "Battery level: $capacity%"
+            fi
+            ;;
+        "Charging")
+            if [ "$capacity" -ge 90 ]; then
+                notify-send -u low -t "$timeout" -c "$category" "Battery almost fully charged" "Battery level: $capacity%"
+            elif [ "$capacity" -eq 100 ]; then
+                notify-send -u low -t "$timeout" -c "$category" "Battery fully charged" "Battery level: $capacity%"
+            fi
+            ;;
+    esac
+}
+
+case "$1" in
+    time) get_battery_time ;;
+    percentage) get_battery_level ;;
+    icon) update_battery_icon ;;
+    *) echo "Invalid argument" >&2
+       exit 1
+       ;;
+esac
