@@ -4,6 +4,7 @@ local autocmd = vim.api.nvim_create_autocmd
 local utils = require("util.cmds")
 
 
+-- Existing autocmds for file detection
 autocmd({ "BufReadPost", "BufNewFile", "BufWritePost" }, {
     desc = "Implements (BaseFile and BaseGitFile) for file detection",
     callback = function(args)
@@ -22,18 +23,39 @@ autocmd({ "BufReadPost", "BufNewFile", "BufWritePost" }, {
         end
     end,
 })
+
 autocmd({ "VimEnter" }, {
-    desc = "Nvim user event that trigger a few ms after nvim starts",
+    desc = "Nvim user event that triggers a few ms after nvim starts",
     callback = function()
         -- If nvim is opened passing a filename, trigger the event immediately.
         if #vim.fn.argv() >= 1 then
             -- In order to avoid visual glitches.
             utils.trigger_event("User BaseDefered", true)
             utils.trigger_event("BufEnter", true) -- also, initialize tabline_buffers.
-        else                                      -- Wait some ms before triggering the event.
+        else
+            -- Wait some ms before triggering the event.
             vim.defer_fn(function()
                 utils.trigger_event("User BaseDefered")
             end, 70)
         end
+    end,
+})
+
+-- Autocmd for setting filetype
+autocmd({ "BufReadPost", "BufNewFile" }, {
+    pattern = "*.jule",
+    desc = "Set filetype to jule",
+    callback = function()
+        vim.bo.filetype = "jule"
+    end,
+})
+
+-- Autocmd for setting up folding
+autocmd("FileType", {
+    pattern = "jule",
+    desc = "Set up folding for jule files",
+    callback = function()
+        vim.wo.foldmethod = "expr"
+        vim.wo.foldexpr = "nvim_treesitter#foldexpr()"
     end,
 })
