@@ -10,6 +10,7 @@ local colors = {
     },
     {
         "TheLooped/cosmos",
+        version = "dev",
         priority = 1000
     },
     {
@@ -56,6 +57,7 @@ local colors = {
     {
         'NvChad/nvim-colorizer.lua',
         ft = { 'css', 'html', 'javascript', 'typescript', 'scss' },
+        cmd = { 'ColorizerToggle', "ColorizerAttachToBuffer", "ColorizerDetachFromBuffer", "ColorizerReloadAllBuffers" },
         config = function()
             require("colorizer").setup {
                 filetypes = { "*" },

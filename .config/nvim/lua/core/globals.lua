@@ -14,7 +14,7 @@ function global:load_variables()
     self.cache_dir = vim.fn.stdpath "cache"
     self.data_dir = string.format("%s/site/", vim.fn.stdpath "data")
     self.vim_path = vim.fn.stdpath "config"
-    self.colorscheme = "tokyodark"
+    self.colorscheme = "cosmos"
     self.mapleader = " "
     self.maplocalleader = " "
 end
