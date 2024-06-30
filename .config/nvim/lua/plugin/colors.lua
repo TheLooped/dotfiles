@@ -5,12 +5,11 @@ local colors = {
         priority = 1000,
     },
     {
-        "kvrohit/mellow.nvim",
+        "mellow-theme/mellow.nvim",
         priority = 1000,
     },
     {
         "TheLooped/cosmos",
-        version = "dev",
         priority = 1000
     },
     {

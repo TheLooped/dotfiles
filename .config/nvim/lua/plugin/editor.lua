@@ -152,17 +152,8 @@ local editor = {
     },
     {
         "cbochs/grapple.nvim",
-        dependencies = { "nvim-lua/plenary.nvim" },
-        cmd = {
-            "GrappleCycle",
-            "GrapplePopup",
-            "GrappleSelect",
-            "GrappleReset",
-            "GrappleTag",
-            "GrappleTags",
-            "GrappleToggle",
-            "GrappleUnTag",
-        },
+        event = "User BaseFile",
+        cmd = "Grapple"
     },
     {
         "lewis6991/gitsigns.nvim",
