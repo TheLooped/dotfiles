@@ -45,6 +45,10 @@ zinit cdreplay -q
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
+bindkey '^A' beginning-of-line
+
+bindkey '^E' end-of-line
+
 # History
 HISTSIZE=5000
 HISTFILE=~/.zsh_history
