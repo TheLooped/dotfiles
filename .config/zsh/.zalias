@@ -19,6 +19,17 @@ alias fixfont='sudo fc-cache -fv'
 
 alias empower='chmod +x'
 
+# lsd aliases
+alias ls='lsd --icon auto'
+alias ll='lsd -l --icon auto'
+alias la='lsd -A --icon auto'
+alias lt='lsd --tree --icon auto'
+alias lss='lsd -l --icon auto --sizesort'
+alias lst='lsd -l --icon auto --timesort'
+alias lsd='lsd --group-directories-first --icon auto'
+alias lsg='lsd -l --icon auto --git'
+alias lso='lsd --oneline --icon auto --color always'
+
 
 ex ()
 {

@@ -5,3 +5,4 @@ export PATH=$HOME/.local/bin:$PATH
 export ZVM_INSTALL=/home/loop/.zvm/self
 export PATH="$PATH:$HOME/.zvm/bin"
 export PATH="$PATH:$ZVM_INSTALL/"
+. "$HOME/.cargo/env"
