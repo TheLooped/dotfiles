@@ -170,6 +170,28 @@ local editor = {
             },
         },
     },
+    {
+        "debugloop/telescope-undo.nvim",
+        dependencies = { -- note how they're inverted to above example
+            {
+                "nvim-telescope/telescope.nvim",
+                dependencies = { "nvim-lua/plenary.nvim" },
+            },
+        },
+        keys = {
+            { -- lazy style key map
+                "<leader>u",
+                "<cmd>Telescope undo<cr>",
+                desc = "undo history",
+            },
+        },
+        opts = {
+            extensions = {
+                undo = {
+                },
+            },
+        },
+    },
 
     {
         "nvim-telescope/telescope.nvim",
@@ -231,7 +253,18 @@ local editor = {
             utils.conditional_func(telescope.load_extension, utils.has("nvim-notify"), "notify")
             utils.conditional_func(telescope.load_extension, utils.has("telescope-fzf-native.nvim"), "fzf")
             utils.conditional_func(telescope.load_extension, utils.has("LuaSnip"), "luasnip")
+            utils.conditional_func(telescope.load_extension, utils.has("undo"), "undo")
         end,
+    },
+
+    {
+        "iamcco/markdown-preview.nvim",
+        cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+        build = "cd app && npm install",
+        init = function()
+            vim.g.mkdp_filetypes = { "markdown" }
+        end,
+        ft = { "markdown" },
     },
 
 }

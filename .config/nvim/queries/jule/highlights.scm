@@ -35,7 +35,7 @@
 "{" @punctuation.bracket
 "}" @punctuation.bracket
 
-"::" @punctuation.delimiter
+;;"::" @punctuation.delimiter
 ":" @punctuation.delimiter
 "." @punctuation.delimiter
 "," @punctuation.delimiter
@@ -48,9 +48,9 @@
 [
   "break"
   "const"
-  "cpp"
+  ;;"cpp"
   "continue"
-  "defer"
+  ;;"defer"
   "enum"
   "else"
   "false"
@@ -64,7 +64,7 @@
   "struct"
   "trait"
   "true"
-  "use"
+  ;; "use"
 ] @keyword
 
 "fn" @keyword.function
@@ -81,18 +81,18 @@
   "for"
 ] @repeat
 
-(mutability_modifier) @keyword
-(use_list (self) @keyword)
+(mutable_flag) @keyword
+;;(use_list (self) @keyword)
 
 (self) @variable.builtin
 
-(char_literal) @string
-(string_literal) @string
-(raw_string_literal) @string
+(char) @string
+(string) @string
+(raw_string) @string
 
-(bool_literal) @constant.builtin
-(integer_literal) @constant.builtin
-(float_literal) @constant.builtin
+(bool) @constant.builtin
+(integer) @constant.builtin
+(float) @constant.builtin
 
 (escape_sequence) @escape
 
