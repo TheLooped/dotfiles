@@ -36,7 +36,7 @@ fi
 
 xrandr --dpi $dpi &
 
-feh --no-fehbg --bg-scale "$HOME/.config/dk/wallpapers/cli.jpg" &
+feh --no-fehbg --bg-scale "$HOME/.config/dk/wallpapers/cityscape.png" &
 
 if hash compfy >/dev/null 2>&1; then
 	pkill compfy
